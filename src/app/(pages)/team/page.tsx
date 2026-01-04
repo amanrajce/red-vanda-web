@@ -1,26 +1,24 @@
 'use client';
 
 import { Container } from "@/components/ui/Container";
-import { Linkedin, Mail, Quote, ArrowRight } from "lucide-react";
+import { Linkedin, Mail, Quote, ArrowRight } from "lucide-react"; // Removed ChevronDown
 import Image from "next/image";
 
 export default function TeamPage() {
   const directors = [
     {
       name: "Malsawmkima",
-      role: "Managing Partner",
+      role: "General Partner",
       bio: "A veteran of the deep-tech ecosystem with 15 years of operational experience. Formerly led infrastructure scaling at [Tech Giant] and pioneered research in renewable energy grids.",
       statement: "We are entering an era where bits are cheap, but atoms are expensive. The next decade's returns will come from founders who are not afraid to get their hands dirty building physical infrastructure.",
-      // UPDATED: 'Hard Tech' is good, but 'Industrial AI' emphasizes the Product/Software aspect strongly.
       focus: ["Energy Sovereignty", "Industrial AI", "Hard Tech"],
       imageSrc: "/director1.jpeg" 
     },
     {
       name: "Rinzuala",
-      role: "General Partner",
+      role: "Partner",
       bio: "An operator-investor who has navigated the 'impossible' stages of growth. Brings a global perspective to our cross-border thesis, connecting Silicon Valley innovation with Asian scale.",
       statement: "True innovation looks like a toy at first, then a threat, then a utility. We back founders during the 'threat' phase—when the technology works but the market isn't ready.",
-      // UPDATED: Changed 'Logistics' to 'Logistics Infrastructure' to sound like TECH, not a Service agency.
       focus: ["Biological Compute", "Logistics Infrastructure", "Financial Infrastructure"],
       imageSrc: "/director2.jpeg"
     }
@@ -29,7 +27,8 @@ export default function TeamPage() {
   return (
     <>
       {/* 1. HERO */}
-      <section className="pt-28 pb-12 md:pt-40 md:pb-20 lg:pt-64 lg:pb-24 bg-white border-b border-neutral-100">
+      {/* Optimized Padding: Content is high enough to be seen immediately, no arrow needed */}
+      <section className="pt-28 pb-16 md:pt-40 md:pb-20 lg:pt-48 lg:pb-24 bg-white border-b border-neutral-100">
         <Container>
           <div className="max-w-4xl animate-slide-up">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 bg-neutral-50 text-neutral-900 border border-neutral-200 rounded-full text-[10px] lg:text-xs font-bold uppercase tracking-widest mb-6 lg:mb-8">
@@ -131,7 +130,7 @@ export default function TeamPage() {
         ))}
       </section>
 
-      {/* 3. CLOSING - Updated to match Pitch Deck Flow */}
+      {/* 3. CLOSING */}
       <section className="py-16 lg:py-24 bg-neutral-950 text-white">
         <Container>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 lg:gap-12">
@@ -144,7 +143,6 @@ export default function TeamPage() {
                     </p>
                 </div>
                 <div className="w-full md:w-auto">
-                     {/* Updated Button to 'Submit Pitch Deck' to be consistent */}
                      <a href="/contact" className="inline-flex items-center justify-center w-full md:w-auto gap-3 px-8 py-4 bg-white text-neutral-950 font-medium hover:bg-primary-50 transition-colors rounded-full">
                         Submit Pitch Deck <ArrowRight className="w-4 h-4" />
                     </a>

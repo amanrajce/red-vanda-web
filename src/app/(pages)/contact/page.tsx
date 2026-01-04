@@ -399,7 +399,7 @@ export default function ContactPage() {
                     </div>
                   </div>
                   <div className="mt-8 pt-8 border-t border-white/10 text-xs text-slate-500 leading-relaxed">
-                    For LP relations and institutional partnerships, please contact the Managing Partners directly via LinkedIn.
+                    For LP relations and institutional partnerships, please contact the General Partners directly via LinkedIn.
                   </div>
                 </div>
 

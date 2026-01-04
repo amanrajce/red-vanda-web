@@ -1,8 +1,8 @@
 import { Container } from "@/components/ui/Container";
-import { Layers, Zap, TrendingUp, ArrowRight, Ban } from "lucide-react";
+import { Layers, Zap, TrendingUp, ArrowRight, ChevronDown } from "lucide-react";
 
 export default function AboutPage() {
-  // 1. Updated Roadmap (Kept the same as it establishes history/future)
+  // 1. Roadmap
   const roadmap = [
     { 
       year: "2024", 
@@ -21,43 +21,44 @@ export default function AboutPage() {
     }
   ];
 
-  // 2. NEW: Investment Parameters (Specific Client Data)
-  // This replaces generic icons with the specific "5Cr / Series A / Product Only" data
+  // 2. Investment Parameters
   const investmentProfile = [
     {
       title: "Product-First DNA",
       desc: "We back proprietary IP and scalable software. We do not invest in service agencies or consultancies.",
-      icon: Layers // Represents 'Stack' or 'Product'
+      icon: Layers 
     },
     {
       title: "High Conviction",
       desc: "We lead or co-lead rounds with ticket sizes up to ₹5 Crores, ensuring we have skin in the game.",
-      icon: Zap // Represents 'Power/Capital'
+      icon: Zap 
     },
     {
       title: "Series A Horizon",
       desc: "We partner from the earliest stages of validation and reserve capital to support you through Series A.",
-      icon: TrendingUp // Represents 'Growth'
+      icon: TrendingUp 
     }
   ];
 
   return (
     <>
-      {/* 1. HERO: "FIRM OF THE FUTURE" */}
-      <section className="relative pt-32 pb-16 md:pt-48 md:pb-24 lg:pt-64 lg:pb-32 overflow-hidden bg-white">
+      {/* 1. HERO: OPTIMIZED (LITE VERSION) */}
+      {/* Reduced padding (pt-44) and text sizes to match Team Page standard */}
+      <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-44 lg:pb-32 overflow-hidden bg-white">
         <Container className="relative z-10">
           <div className="max-w-4xl animate-slide-up">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-900 border border-slate-200 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6 md:mb-8">
+            
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 bg-slate-50 text-slate-900 border border-slate-200 rounded-full text-[10px] lg:text-xs font-bold uppercase tracking-widest mb-6 lg:mb-8 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse"></span>
               Launching 2026
             </div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-8xl font-serif font-bold text-slate-900 leading-[1.1] lg:leading-[1.05] mb-6 md:mb-8">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-slate-900 leading-[1.1] lg:leading-[1.05] mb-6 lg:mb-8 tracking-tight">
               Architecting the <br />
               <span className="text-slate-400 italic font-light">Firm of the Future.</span>
             </h1>
             
-            <p className="text-lg md:text-xl lg:text-2xl text-slate-600 leading-relaxed max-w-2xl mb-10 md:mb-12">
+            <p className="text-base md:text-xl text-slate-600 leading-relaxed max-w-2xl mb-10 lg:mb-12">
               Red Vanda Partners is built for the next century of innovation. 
               We are currently in stealth, assembling the capital and network required 
               to support the world's most ambitious engineers.
@@ -66,6 +67,13 @@ export default function AboutPage() {
             <div className="h-px w-full bg-slate-200" />
           </div>
         </Container>
+
+        {/* --- SCROLL INDICATOR --- */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-50 hover:opacity-100 transition-opacity cursor-default">
+          <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Scroll</span>
+          <ChevronDown className="w-5 h-5 text-slate-900" />
+        </div>
+
       </section>
 
       {/* 2. THE MANIFESTO */}
@@ -136,7 +144,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 4. NEW: INVESTMENT PROFILE (Ticket Size, Sector, Stage) */}
+      {/* 4. INVESTMENT PROFILE */}
       <section className="py-16 md:py-24 bg-white">
         <Container>
           <div className="max-w-3xl mb-12">
@@ -164,13 +172,13 @@ export default function AboutPage() {
               Building the impossible?
             </h2>
             
-            {/* Added Specific Criteria here for clarity */}
+            {/* UPDATED MANDATE SECTION */}
             <div className="flex flex-wrap justify-center gap-4 text-sm font-mono uppercase tracking-widest text-orange-500 mb-8 md:mb-10">
               <span className="flex items-center gap-2"><Zap size={14}/> Up to ₹5 Cr</span>
               <span className="hidden md:inline text-slate-600">|</span>
-              <span className="flex items-center gap-2"><Layers size={14}/> Product Only</span>
+              <span className="flex items-center gap-2"><Layers size={14}/> Sector-Agnostic</span>
               <span className="hidden md:inline text-slate-600">|</span>
-              <span className="flex items-center gap-2"><TrendingUp size={14}/> Series A</span>
+              <span className="flex items-center gap-2"><TrendingUp size={14}/> Pre-Seed to Pre-IPO</span>
             </div>
 
             <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
@@ -185,8 +193,8 @@ export default function AboutPage() {
               Submit Pitch Deck <ArrowRight className="w-4 h-4" />
             </a>
             
-            <p className="mt-6 text-xs text-slate-600">
-              *We do not invest in services or consultancies.
+            <p className="mt-6 text-xs text-slate-600 opacity-60">
+              *We are Sector-Agnostic but strictly focus on Tech-Enabled Businesses.
             </p>
           </div>
         </Container>

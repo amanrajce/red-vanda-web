@@ -12,15 +12,16 @@ const faqs = [
     items: [
       {
         q: "Do you lead rounds?",
-        a: "Yes. We are high-conviction investors. We prefer to lead or co-lead Seed to Series A rounds. We believe in taking pricing responsibility and helping set the governance structure for future success."
+        // UPDATED: Now mentions Pre-Seed to Pre-IPO
+        a: "Yes. We are high-conviction investors. We prefer to lead or co-lead rounds across the lifecycle—from Pre-Seed to Pre-IPO. We believe in taking pricing responsibility and helping set the governance structure for future success."
+      },
+      {
+        q: "What is your ticket size and investment focus?",
+        a: "We are Sector-Agnostic but strictly focus on Tech-Enabled Businesses building scalable IP or deep infrastructure. We do not invest in pure services or traditional SMEs. Our ticket size extends up to ₹5 Crores, backing founders from Pre-Seed to Pre-IPO stages."
       },
       {
         q: "What is your reserve policy?",
         a: "We back our winners aggressively. We typically reserve a 2:1 ratio (Capital Reserved : Initial Check) for follow-on rounds. When things work, we want to maintain our pro-rata ownership deep into the growth stages."
-      },
-      {
-        q: "Do you invest in competing companies?",
-        a: "Never. If we back you, we are in your corner. We maintain strict exclusivity within specific sub-sectors to ensure our incentives and networks are fully aligned with your success."
       }
     ]
   },
@@ -34,10 +35,6 @@ const faqs = [
       {
         q: "How do you help beyond capital?",
         a: "Our platform team focuses on two things: Talent and Downstream Capital. We help you hire your first 10 engineers and we introduce you to Series B/C investors when you are ready to scale."
-      },
-      {
-        q: "What is your diligence timeline?",
-        a: "We move at the speed of the founder. For software, we can issue a term sheet in 10 days. For deep-tech/hardware involving IP diligence, we aim for 21 days maximum. We do not drag our feet."
       }
     ]
   }

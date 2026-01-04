@@ -65,8 +65,9 @@ export default function Home() {
       {/* Grid Overlay (Absolute) */}
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
 
-      {/* 1. HERO SECTION */}
-      <section className="relative z-10 min-h-screen flex items-center pt-20 lg:pt-0">
+      {/* 1. HERO SECTION - FIXED PADDING */}
+      {/* Changed 'pt-20 lg:pt-0' to 'pt-32 lg:pt-40' to prevent Laptop Overlap */}
+      <section className="relative z-10 min-h-screen flex items-center pt-32 lg:pt-40 pb-20">
         <Container>
           <div className="grid lg:grid-cols-12 gap-12 items-center">
 
@@ -162,6 +163,13 @@ export default function Home() {
 
           </div>
         </Container>
+
+        {/* --- SCROLL INDICATOR --- */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-50 hover:opacity-100 transition-opacity cursor-default">
+          <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Scroll</span>
+          <ChevronDown className="w-5 h-5 text-slate-900" />
+        </div>
+
       </section>
 
       {/* 2. THE TICKER */}
@@ -184,9 +192,9 @@ export default function Home() {
         <Container>
           <div className="mb-16">
             <h2 className="text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-6">The Mandate.</h2>
+            {/* UPDATED TEXT: SECTOR AGNOSTIC */}
             <p className="text-lg text-slate-600 max-w-2xl">
-              We are not a volume fund. We do not invest in services, agencies, or quick flips.
-              We back generational product companies.
+              We are Sector-Agnostic but strictly focus on Tech-Enabled Businesses building scalable IP or deep infrastructure.
             </p>
           </div>
 
@@ -201,30 +209,26 @@ export default function Home() {
                     <Activity className="w-6 h-6 text-orange-600" />
                   </div>
                   <span className="px-3 py-1 bg-slate-100 border border-slate-200 rounded-full text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                    Seed to Series A
+                    Pre-Seed to Pre-IPO
                   </span>
                 </div>
 
-                {/* Main Metric - Updated */}
                 <div className="space-y-4">
                   <div>
                     <h3 className="text-slate-500 font-bold text-xs uppercase tracking-widest mb-2">Ticket Size</h3>
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl sm:text-6xl font-serif font-bold text-slate-900 tracking-tighter">₹5</span>
                       <span className="text-2xl font-bold text-slate-400">Cr</span>
-                      {/* Subtly indicating Max here instead of big "Up to" text */}
                       <span className="text-sm font-bold text-slate-300 ml-1 uppercase tracking-wide">Max</span>
                     </div>
                   </div>
 
-                  {/* Visual Bar - Updated to not look 100% full */}
                   <div className="space-y-2">
                     <div className="flex justify-between text-[10px] font-bold uppercase text-slate-400 tracking-wide">
                       <span>Deployment Capacity</span>
                       <span>100% Reserved</span>
                     </div>
                     <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                      {/* Width set to 80% so it looks like a beam, not a solid block */}
                       <div className="bg-gradient-to-r from-orange-400 to-orange-600 h-full w-[80%] rounded-full shadow-[0_0_10px_rgba(249,115,22,0.5)]" />
                     </div>
                   </div>
@@ -250,7 +254,7 @@ export default function Home() {
                    </div>
 
                   <div>
-                    <h3 className="text-3xl font-serif font-bold mb-3">Aizawl HQ</h3>
+                    <h3 className="text-3xl font-serif font-bold mb-3 text-white">Aizawl HQ</h3>
                     <p className="text-slate-400 leading-relaxed text-sm sm:text-base border-l-2 border-orange-500 pl-4">
                       Bridging the gap between India's overlooked engineering talent and global capital markets. We build where others don't look.
                     </p>
@@ -292,7 +296,8 @@ export default function Home() {
                     <ShieldCheck size={16} />
                     <span>The Filter</span>
                   </div>
-                  <h3 className="text-3xl font-serif font-bold mb-3 text-slate-900">Infrastructure only.</h3>
+                  {/* UPDATED TITLE */}
+                  <h3 className="text-3xl font-serif font-bold mb-3 text-slate-900">Tech-Enabled and IP Led.</h3>
                   <p className="text-slate-600 text-lg leading-relaxed">
                     We look for proprietary IP, hard-tech, and scalable software rails.
                     <span className="block text-slate-400 text-sm mt-2 font-medium italic">*We do not invest in D2C, Services, or E-commerce.</span>
