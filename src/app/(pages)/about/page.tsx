@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
-import { Layers, Zap, TrendingUp, ArrowRight, ChevronDown } from "lucide-react";
+import { Layers, Zap, TrendingUp, ArrowRight, ChevronDown, MapPin, Target, Heart } from "lucide-react";
+import Link from "next/link";
 
 export default function AboutPage() {
   // 1. Roadmap
@@ -7,7 +8,7 @@ export default function AboutPage() {
     { 
       year: "2024", 
       title: "The Thesis Formation",
-      desc: "Identifying the structural gaps in deep-tech financing. Assembling the core partnership." 
+      desc: "Identifying the structural gaps in deep-tech financing and assembling the core partnership." 
     },
     { 
       year: "2025", 
@@ -21,35 +22,35 @@ export default function AboutPage() {
     }
   ];
 
-  // 2. Investment Parameters
+  // 2. Values
   const investmentProfile = [
     {
-      title: "Product-First DNA",
-      desc: "We back proprietary IP and scalable software. We do not invest in service agencies or consultancies.",
-      icon: Layers 
+      title: "Conviction",
+      desc: "We back founders with conviction, not consensus. When we believe in a vision, we commit fully.",
+      icon: Target 
     },
     {
-      title: "High Conviction",
-      desc: "We lead or co-lead rounds with ticket sizes up to ₹5 Crores, ensuring we have skin in the game.",
-      icon: Zap 
+      title: "Proximity",
+      desc: "Our presence in underserved markets gives us unique insights that distant investors simply cannot have.",
+      icon: MapPin 
     },
     {
-      title: "Series A Horizon",
-      desc: "We partner from the earliest stages of validation and reserve capital to support you through Series A.",
-      icon: TrendingUp 
+      title: "Partnership",
+      desc: "We are not just investors, we are partners in your journey, offering support beyond capital.",
+      icon: Heart 
     }
   ];
 
   return (
-    <>
-      {/* 1. HERO: OPTIMIZED (LITE VERSION) */}
-      {/* Reduced padding (pt-44) and text sizes to match Team Page standard */}
+    <div className="bg-white text-slate-900 selection:bg-[#a80607] selection:text-white">
+      
+      {/* 1. HERO */}
       <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-44 lg:pb-32 overflow-hidden bg-white">
         <Container className="relative z-10">
           <div className="max-w-4xl animate-slide-up">
             
             <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 bg-slate-50 text-slate-900 border border-slate-200 rounded-full text-[10px] lg:text-xs font-bold uppercase tracking-widest mb-6 lg:mb-8 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-[#a80607] animate-pulse"></span>
               Launching 2026
             </div>
             
@@ -59,74 +60,121 @@ export default function AboutPage() {
             </h1>
             
             <p className="text-base md:text-xl text-slate-600 leading-relaxed max-w-2xl mb-10 lg:mb-12">
-              Red Vanda Partners is built for the next century of innovation. 
-              We are currently in stealth, assembling the capital and network required 
-              to support the world's most ambitious engineers.
+              Red Vanda Partners backs exceptional founders across untapped <strong className="text-slate-900">Tier 2/3+ city markets</strong> and <strong className="text-slate-900">frontier technology</strong>, building companies that define the future.
             </p>
 
             <div className="h-px w-full bg-slate-200" />
           </div>
         </Container>
 
-        {/* --- SCROLL INDICATOR --- */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-50 hover:opacity-100 transition-opacity cursor-default">
           <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Scroll</span>
           <ChevronDown className="w-5 h-5 text-slate-900" />
         </div>
-
       </section>
 
-      {/* 2. THE MANIFESTO */}
-      <section className="py-16 md:py-24 lg:py-32 bg-slate-900 text-white">
+      {/* 2. THE STRATEGY */}
+      <section className="py-16 md:py-24 lg:py-32 bg-slate-950 text-white">
         <Container>
           <div className="grid lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-start">
             
+            {/* Left: Sticky Header */}
             <div className="relative lg:sticky lg:top-32">
+              <span className="text-red-500 font-mono text-xs uppercase tracking-widest font-bold mb-2 block">
+                OUR STRATEGY
+              </span>
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4 md:mb-6">
-                Our Mandate.
+                Two Distinct Theses, <br /> One Unified Vision.
               </h2>
-              <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-md">
-                We are not just another fund. We are building an institution designed to 
-                outlast market cycles and serve generational founders.
+              <p className="text-slate-300 text-base md:text-lg leading-relaxed max-w-md">
+                We pursue opportunity wherever it emerges, from emerging city economies to the cutting edge of technology.
               </p>
             </div>
             
+            {/* Right: Theses List */}
             <div className="space-y-10 md:space-y-12">
-              <div className="border-l-2 border-orange-500 pl-6 md:pl-8">
-                <h3 className="text-xl md:text-2xl font-serif font-medium text-orange-100 mb-3 md:mb-4">Why Now?</h3>
-                <p className="text-slate-300 text-base md:text-lg leading-relaxed">
-                  The venture model hasn't changed in 20 years, but technology has. 
-                  We believe the next trillion-dollar companies will be built in 
-                  infrastructure, energy, and biological compute.
+              
+              {/* Thesis 1 */}
+              <div className="border-l-2 border-[#a80607] pl-6 md:pl-8">
+                <span className="text-xs font-bold uppercase tracking-widest text-red-500 mb-2 block">TIER 2/3+ CITIES</span>
+                <h3 className="text-xl md:text-2xl font-serif font-medium text-white mb-3 md:mb-4">Untapped Markets</h3>
+                <p className="text-slate-300 text-base md:text-lg leading-relaxed mb-4">
+                  The next billion consumers will emerge from Tier 2 and Tier 3 cities. We back founders who live and breathe these communities and understand local needs.
                 </p>
+                <ul className="text-sm text-slate-400 space-y-1 mb-6 font-medium">
+                   <li>• Emerging City Economies</li>
+                   <li>• Local Market Expertise</li>
+                   <li>• Underserved Demographics</li>
+                </ul>
+                <Link href="/thesis#markets" className="inline-flex items-center gap-2 text-white font-bold text-xs uppercase tracking-widest hover:text-red-500 transition-colors">
+                   LEARN MORE <ArrowRight className="w-4 h-4 text-red-500" />
+                </Link>
               </div>
               
-              <div className="border-l-2 border-slate-700 pl-6 md:pl-8">
-                <h3 className="text-xl md:text-2xl font-serif font-medium text-white mb-3 md:mb-4">The 2026 Vision</h3>
-                <p className="text-slate-300 text-base md:text-lg leading-relaxed">
-                  By our official launch in 2026, Red Vanda Partners will have established 
-                  a global corridor for deep-tech innovation, connecting capital in the West 
-                  with engineering talent in the East.
+              {/* Thesis 2 */}
+              <div className="border-l-2 border-slate-800 pl-6 md:pl-8 group hover:border-[#a80607] transition-colors duration-500">
+                <span className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 block group-hover:text-red-500 transition-colors">MAINSTREAM MARKETS</span>
+                <h3 className="text-xl md:text-2xl font-serif font-medium text-white mb-3 md:mb-4">Tech-Enabled and Frontier Tech</h3>
+                <p className="text-slate-300 text-base md:text-lg leading-relaxed mb-4">
+                  We back technical founders leveraging breakthrough technologies, from AI infrastructure to climate solutions, to transform industries.
                 </p>
+                <ul className="text-sm text-slate-400 space-y-1 mb-6 font-medium">
+                   <li>• AI and Machine Learning</li>
+                   <li>• Climate Tech and Sustainability</li>
+                   <li>• Enterprise SaaS</li>
+                </ul>
+                <Link href="/thesis#tech" className="inline-flex items-center gap-2 text-white font-bold text-xs uppercase tracking-widest hover:text-red-500 transition-colors">
+                   LEARN MORE <ArrowRight className="w-4 h-4 text-red-500" />
+                </Link>
               </div>
+
             </div>
           </div>
         </Container>
       </section>
 
-      {/* 3. ROADMAP (Timeline) */}
-      <section className="py-16 md:py-24 lg:py-32 bg-slate-50">
+      {/* 3. CTA: COMPACT & ACTIVE (Updated) */}
+      <section className="py-16 px-4 bg-white border-t border-slate-100">
+        <Container>
+           <div className="relative bg-[#a80607] rounded-[2rem] p-10 md:p-14 text-center overflow-hidden shadow-2xl shadow-[#a80607]/20 max-w-5xl mx-auto">
+              
+              {/* Abstract Background Elements */}
+              <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+              <div className="absolute bottom-0 right-0 w-64 h-64 bg-black/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+              
+              <div className="relative z-10">
+                 <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-6">
+                    Ready to Build the Future?
+                 </h2>
+                 <p className="text-white/90 text-base md:text-lg font-light leading-relaxed mb-10 max-w-2xl mx-auto">
+                    Whether you are building for underserved markets or pushing the boundaries of technology, we want to hear from you.
+                 </p>
+                 
+                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <Link 
+                       href="/contact" 
+                       className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-[#a80607] font-bold text-sm uppercase tracking-widest rounded-lg hover:bg-slate-50 hover:scale-105 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-w-[200px]"
+                    >
+                       Apply Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                 </div>
+              </div>
+           </div>
+        </Container>
+      </section>
+
+      {/* 4. ROADMAP (Timeline) */}
+      <section className="py-16 md:py-24 bg-slate-50">
         <Container>
           <div className="max-w-3xl mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-3 md:mb-4">The Road to 2026</h2>
             <p className="text-base md:text-lg text-slate-600">Our strategic path to institutional deployment.</p>
           </div>
 
-          <div className="relative border-l-2 border-slate-200 ml-2 md:ml-4 lg:ml-8 space-y-12 md:space-y-16">
+          <div className="relative border-l-2 border-slate-200 ml-4 lg:ml-8 space-y-12 md:space-y-16">
             {roadmap.map((item, index) => (
               <div key={index} className="relative pl-8 md:pl-12 lg:pl-16 group">
-                <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-4 border-slate-300 group-hover:border-orange-600 transition-colors duration-300" />
-                
+                <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-4 border-slate-300 group-hover:border-[#a80607] transition-colors duration-300" />
                 <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6 mb-2">
                   <span className="text-2xl md:text-3xl font-serif font-bold text-slate-300 group-hover:text-slate-900 transition-colors duration-300">
                     {item.year}
@@ -144,19 +192,19 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 4. INVESTMENT PROFILE */}
+      {/* 5. VALUES / DRIVERS */}
       <section className="py-16 md:py-24 bg-white">
         <Container>
           <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">Investment Criteria</h2>
-            <p className="text-base md:text-lg text-slate-600">We are highly selective. We look for these structural characteristics.</p>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">What Drives Us</h2>
+            <p className="text-base md:text-lg text-slate-600">The principles that guide every investment decision and partnership we make.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {investmentProfile.map((area, idx) => (
-              <div key={idx} className="bg-slate-50 p-6 md:p-10 rounded-none border border-slate-100 hover:border-slate-300 transition-all duration-300">
-                <area.icon className="w-8 h-8 text-slate-900 mb-4 md:mb-6" />
-                <h3 className="text-xl md:text-2xl font-serif font-bold text-slate-900 mb-2 md:mb-3">{area.title}</h3>
+              <div key={idx} className="bg-slate-50 p-10 rounded-[1rem] border border-slate-100 hover:border-[#a80607]/30 hover:shadow-lg transition-all duration-300">
+                <area.icon className="w-8 h-8 text-[#a80607] mb-6" />
+                <h3 className="text-xl md:text-2xl font-serif font-bold text-slate-900 mb-3">{area.title}</h3>
                 <p className="text-sm md:text-base text-slate-600 leading-relaxed">{area.desc}</p>
               </div>
             ))}
@@ -164,41 +212,26 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 5. CTA: PITCH DECK GATEWAY */}
-      <section className="py-16 md:py-24 bg-slate-900 text-white border-t border-slate-800">
-        <Container>
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-6 md:mb-8">
-              Building the impossible?
-            </h2>
-            
-            {/* UPDATED MANDATE SECTION */}
-            <div className="flex flex-wrap justify-center gap-4 text-sm font-mono uppercase tracking-widest text-orange-500 mb-8 md:mb-10">
-              <span className="flex items-center gap-2"><Zap size={14}/> Up to ₹5 Cr</span>
-              <span className="hidden md:inline text-slate-600">|</span>
-              <span className="flex items-center gap-2"><Layers size={14}/> Sector-Agnostic</span>
-              <span className="hidden md:inline text-slate-600">|</span>
-              <span className="flex items-center gap-2"><TrendingUp size={14}/> Pre-Seed to Pre-IPO</span>
+      {/* 6. REGULATORY FOOTER */}
+      <div className="bg-slate-900 border-t border-slate-800 py-10 text-slate-400 text-xs">
+         <Container>
+            <div className="grid md:grid-cols-2 gap-8">
+               <div>
+                  <p className="font-bold text-white uppercase tracking-widest mb-2">Fund Details</p>
+                  <p className="mb-1">AIF Name: Senhri Investment Fund</p>
+                  <p className="mb-1">Registration No: IN/AIF1/25-26/1999</p>
+                  <p>Investment Manager: Red Vanda Partners</p>
+               </div>
+               <div className="md:text-right">
+                  <p className="font-bold text-white uppercase tracking-widest mb-2">Registered Office</p>
+                  <p>Mizoram Startup Mission Planning Dept., Block I</p>
+                  <p>796005 Treasury Square Aizawl</p>
+                  <p>AIZAWL, MIZORAM, 796005</p>
+               </div>
             </div>
+         </Container>
+      </div>
 
-            <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-              If you fit our thesis, we want to hear from you. 
-              Upload your pitch deck to our secure portal.
-            </p>
-            
-            <a 
-              href="/contact" 
-              className="inline-flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 bg-primary-700 text-white font-medium rounded-full hover:bg-orange-700 transition-all text-sm md:text-base shadow-lg shadow-orange-900/20"
-            >
-              Submit Pitch Deck <ArrowRight className="w-4 h-4" />
-            </a>
-            
-            <p className="mt-6 text-xs text-slate-600 opacity-60">
-              *We are Sector-Agnostic but strictly focus on Tech-Enabled Businesses.
-            </p>
-          </div>
-        </Container>
-      </section>
-    </>
+    </div>
   );
 }
