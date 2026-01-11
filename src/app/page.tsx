@@ -247,7 +247,7 @@ export default function Home() {
                   </foreignObject>
 
                   {/* Infrastructure Label */}
-                  <foreignObject x="185" y="235" width="130" height="40">
+                  <foreignObject x="210" y="235" width="130" height="40">
                     <div className="bg-white/95 border-2 border-orange-400 text-[10px] font-bold px-3 py-1.5 rounded-lg shadow-md text-slate-900 backdrop-blur-sm text-center">
                       Infrastructure
                     </div>
