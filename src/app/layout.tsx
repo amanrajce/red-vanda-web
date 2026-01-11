@@ -5,11 +5,11 @@ import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Red Vanda Partners | Venture Capital",
+  title: "Red Vanda Partners",
   description: "Global venture capital firm investing in deep tech and infrastructure companies. Backing institutional founders building transformative technology.",
   keywords: "venture capital, deep tech, infrastructure, AI, climate tech, enterprise software",
   openGraph: {
-    title: "Red Vanda Partners | Venture Capital",
+    title: "Red Vanda Partners",
     description: "Backing institutional founders building transformative deep-tech infrastructure.",
     type: "website",
   }
