@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui/Container";
-import { Layers, Zap, TrendingUp, ArrowRight, ChevronDown, MapPin, Target, Heart } from "lucide-react";
+import { Layers, Zap, TrendingUp, ArrowRight, MapPin, Target, Heart, HandHeart, Sparkles, Scale, FileText, Building2, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 export default function AboutPage() {
@@ -38,6 +38,11 @@ export default function AboutPage() {
       title: "Partnership",
       desc: "We are not just investors, we are partners in your journey, offering support beyond capital.",
       icon: Heart 
+    },
+    {
+      title: "Empathy",
+      desc: "We understand the founder journey and support founders beyond capital through mentorship, networks, and strategic guidance.",
+      icon: HandHeart 
     }
   ];
 
@@ -45,16 +50,11 @@ export default function AboutPage() {
     <div className="bg-white text-slate-900 selection:bg-[#a80607] selection:text-white">
       
       {/* 1. HERO */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-44 lg:pb-32 overflow-hidden bg-white">
+      <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-44 lg:pb-32 overflow-hidden bg-white border-b border-slate-100">
         <Container className="relative z-10">
-          <div className="max-w-4xl animate-slide-up">
+          <div className="max-w-4xl animate-slide-up px-4 md:px-0">
             
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 bg-slate-50 text-slate-900 border border-slate-200 rounded-full text-[10px] lg:text-xs font-bold uppercase tracking-widest mb-6 lg:mb-8 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#a80607] animate-pulse"></span>
-              Launching 2026
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-slate-900 leading-[1.1] lg:leading-[1.05] mb-6 lg:mb-8 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-slate-900 leading-[1.1] lg:leading-[1.05] mb-6 lg:mb-8 tracking-tight">
               Architecting the <br />
               <span className="text-slate-400 italic font-light">Firm of the Future.</span>
             </h1>
@@ -63,108 +63,54 @@ export default function AboutPage() {
               Red Vanda Partners backs exceptional founders across untapped <strong className="text-slate-900">Tier 2/3+ city markets</strong> and <strong className="text-slate-900">frontier technology</strong>, building companies that define the future.
             </p>
 
-            <div className="h-px w-full bg-slate-200" />
-          </div>
-        </Container>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-50 hover:opacity-100 transition-opacity cursor-default">
-          <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Scroll</span>
-          <ChevronDown className="w-5 h-5 text-slate-900" />
-        </div>
-      </section>
-
-      {/* 2. THE STRATEGY */}
-      <section className="py-16 md:py-24 lg:py-32 bg-slate-950 text-white">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-start">
-            
-            {/* Left: Sticky Header */}
-            <div className="relative lg:sticky lg:top-32">
-              <span className="text-red-500 font-mono text-xs uppercase tracking-widest font-bold mb-2 block">
-                OUR STRATEGY
-              </span>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4 md:mb-6">
-                Two Distinct Theses, <br /> One Unified Vision.
-              </h2>
-              <p className="text-slate-300 text-base md:text-lg leading-relaxed max-w-md">
-                We pursue opportunity wherever it emerges, from emerging city economies to the cutting edge of technology.
-              </p>
-            </div>
-            
-            {/* Right: Theses List */}
-            <div className="space-y-10 md:space-y-12">
-              
-              {/* Thesis 1 */}
-              <div className="border-l-2 border-[#a80607] pl-6 md:pl-8">
-                <span className="text-xs font-bold uppercase tracking-widest text-red-500 mb-2 block">TIER 2/3+ CITIES</span>
-                <h3 className="text-xl md:text-2xl font-serif font-medium text-white mb-3 md:mb-4">Untapped Markets</h3>
-                <p className="text-slate-300 text-base md:text-lg leading-relaxed mb-4">
-                  The next billion consumers will emerge from Tier 2 and Tier 3 cities. We back founders who live and breathe these communities and understand local needs.
-                </p>
-                <ul className="text-sm text-slate-400 space-y-1 mb-6 font-medium">
-                   <li>• Emerging City Economies</li>
-                   <li>• Local Market Expertise</li>
-                   <li>• Underserved Demographics</li>
-                </ul>
-                <Link href="/thesis#markets" className="inline-flex items-center gap-2 text-white font-bold text-xs uppercase tracking-widest hover:text-red-500 transition-colors">
-                   LEARN MORE <ArrowRight className="w-4 h-4 text-red-500" />
-                </Link>
-              </div>
-              
-              {/* Thesis 2 */}
-              <div className="border-l-2 border-slate-800 pl-6 md:pl-8 group hover:border-[#a80607] transition-colors duration-500">
-                <span className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 block group-hover:text-red-500 transition-colors">MAINSTREAM MARKETS</span>
-                <h3 className="text-xl md:text-2xl font-serif font-medium text-white mb-3 md:mb-4">Tech-Enabled and Frontier Tech</h3>
-                <p className="text-slate-300 text-base md:text-lg leading-relaxed mb-4">
-                  We back technical founders leveraging breakthrough technologies, from AI infrastructure to climate solutions, to transform industries.
-                </p>
-                <ul className="text-sm text-slate-400 space-y-1 mb-6 font-medium">
-                   <li>• AI and Machine Learning</li>
-                   <li>• Climate Tech and Sustainability</li>
-                   <li>• Enterprise SaaS</li>
-                </ul>
-                <Link href="/thesis#tech" className="inline-flex items-center gap-2 text-white font-bold text-xs uppercase tracking-widest hover:text-red-500 transition-colors">
-                   LEARN MORE <ArrowRight className="w-4 h-4 text-red-500" />
-                </Link>
-              </div>
-
-            </div>
           </div>
         </Container>
       </section>
 
-      {/* 3. CTA: COMPACT & ACTIVE (Updated) */}
-      <section className="py-16 px-4 bg-white border-t border-slate-100">
-        <Container>
-           <div className="relative bg-[#a80607] rounded-[2rem] p-10 md:p-14 text-center overflow-hidden shadow-2xl shadow-[#a80607]/20 max-w-5xl mx-auto">
-              
-              {/* Abstract Background Elements */}
-              <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-              <div className="absolute bottom-0 right-0 w-64 h-64 bg-black/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
-              
-              <div className="relative z-10">
-                 <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-6">
-                    Ready to Build the Future?
-                 </h2>
-                 <p className="text-white/90 text-base md:text-lg font-light leading-relaxed mb-10 max-w-2xl mx-auto">
-                    Whether you are building for underserved markets or pushing the boundaries of technology, we want to hear from you.
-                 </p>
-                 
-                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <Link 
-                       href="/contact" 
-                       className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-[#a80607] font-bold text-sm uppercase tracking-widest rounded-lg hover:bg-slate-50 hover:scale-105 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-w-[200px]"
-                    >
-                       Apply Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                 </div>
-              </div>
-           </div>
+      {/* 2. OUR MISSION (Dark Theme - Layout Fixed) */}
+      {/* FIX: Removed huge pb-64 and switched to standard padding to prevent overlap issues on mobile */}
+      <section className="bg-slate-950 py-16 md:py-24 relative overflow-hidden z-10">
+        
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 pointer-events-none"></div>
+
+        <Container className="relative z-10">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            {/* Left: Title & Vanda Inspiration */}
+            <div className="lg:col-span-4 lg:sticky lg:top-32">
+               <span className="text-[#a80607] font-bold tracking-widest uppercase text-xs mb-4 block">Our Purpose</span>
+               <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-8">Our Mission</h2>
+               
+               <div className="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+                  <div className="flex items-center gap-3 mb-4">
+                     <Sparkles className="w-5 h-5 text-[#a80607]" />
+                     <h4 className="font-bold text-white text-sm uppercase tracking-wide">Why "Vanda"?</h4>
+                  </div>
+                  <p className="text-sm text-slate-400 leading-relaxed">
+                     Our name draws inspiration from the <strong>Vanda orchid</strong> resilient, distinctive, and capable of thriving in diverse environments. Like the orchid, we seek beauty and potential in places others overlook.
+                  </p>
+               </div>
+            </div>
+
+            {/* Right: Mission Narrative */}
+            <div className="lg:col-span-8 space-y-8 md:space-y-10">
+               <p className="text-lg md:text-2xl text-slate-300 leading-relaxed font-light">
+                  At Red Vanda Partners, we believe the next wave of transformative companies will emerge from unexpected places. While others focus exclusively on established tech hubs, we've built expertise in identifying and nurturing exceptional founders wherever they are.
+               </p>
+               {/* Divider Line */}
+               <div className="h-px w-24 bg-[#a80607]"></div>
+               <p className="text-base md:text-lg text-slate-400 leading-relaxed">
+                  Simultaneously, we recognize that frontier technology will reshape every industry. Our dual thesis allows us to capture opportunity across the full spectrum of innovation from grassroots disruption in emerging markets to breakthrough advances in AI, climate tech, and beyond.
+               </p>
+            </div>
+
+          </div>
         </Container>
       </section>
 
-      {/* 4. ROADMAP (Timeline) */}
-      <section className="py-16 md:py-24 bg-slate-50">
+      {/* 3. ROADMAP (Timeline) */}
+      {/* FIX: Removed negative margins and rounded top. Now sits cleanly below the mission section. */}
+      <section className="bg-white py-16 md:py-24">
         <Container>
           <div className="max-w-3xl mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-3 md:mb-4">The Road to 2026</h2>
@@ -192,41 +138,99 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 5. VALUES / DRIVERS */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* 4. VALUES / DRIVERS */}
+      <section className="py-16 md:py-24 bg-slate-50">
         <Container>
           <div className="max-w-3xl mb-12">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">What Drives Us</h2>
             <p className="text-base md:text-lg text-slate-600">The principles that guide every investment decision and partnership we make.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {investmentProfile.map((area, idx) => (
-              <div key={idx} className="bg-slate-50 p-10 rounded-[1rem] border border-slate-100 hover:border-[#a80607]/30 hover:shadow-lg transition-all duration-300">
+              <div key={idx} className="bg-white p-8 rounded-[1rem] border border-slate-100 hover:border-[#a80607]/30 hover:shadow-lg transition-all duration-300">
                 <area.icon className="w-8 h-8 text-[#a80607] mb-6" />
-                <h3 className="text-xl md:text-2xl font-serif font-bold text-slate-900 mb-3">{area.title}</h3>
-                <p className="text-sm md:text-base text-slate-600 leading-relaxed">{area.desc}</p>
+                <h3 className="text-xl font-serif font-bold text-slate-900 mb-3">{area.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{area.desc}</p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* 6. REGULATORY FOOTER */}
-      <div className="bg-slate-900 border-t border-slate-800 py-10 text-slate-400 text-xs">
-         <Container>
-            <div className="grid md:grid-cols-2 gap-8">
-               <div>
-                  <p className="font-bold text-white uppercase tracking-widest mb-2">Fund Details</p>
-                  <p className="mb-1">AIF Name: Senhri Investment Fund</p>
-                  <p className="mb-1">Registration No: IN/AIF1/25-26/1999</p>
-                  <p>Investment Manager: Red Vanda Partners</p>
+      {/* 5. REGULATORY DISCLOSURE */}
+      <div className="bg-slate-950 border-t border-slate-900 pt-20 pb-24 relative overflow-hidden">
+         {/* Subtle Legal Grid Texture */}
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"></div>
+
+         <Container className="relative z-10">
+            <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
+               
+               {/* Left: Statement */}
+               <div className="lg:w-1/3">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full mb-6">
+                     <Scale className="w-3.5 h-3.5 text-[#a80607]" />
+                     <span className="text-[10px] font-mono uppercase tracking-widest text-white/80 font-bold">Compliance</span>
+                  </div>
+                  <h3 className="text-2xl font-serif text-white mb-4">Regulatory Disclosure</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                     Red Vanda Partners operates in strict compliance with the regulations set forth by the Securities and Exchange Board of India (SEBI).
+                  </p>
+                  <div className="flex items-center gap-2 text-xs font-mono text-slate-500 uppercase tracking-wider">
+                     <CheckCircle2 className="w-4 h-4 text-[#a80607]" />
+                     Regulated Entity
+                  </div>
                </div>
-               <div className="md:text-right">
-                  <p className="font-bold text-white uppercase tracking-widest mb-2">Registered Office</p>
-                  <p>Mizoram Startup Mission Planning Dept., Block I</p>
-                  <p>796005 Treasury Square Aizawl</p>
-                  <p>AIZAWL, MIZORAM, 796005</p>
+
+               {/* Right: Data Ledger Cards */}
+               <div className="lg:w-2/3 grid md:grid-cols-2 gap-6 w-full">
+                  
+                  {/* Card 1: Fund Identity */}
+                  <div className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:border-white/20 transition-colors group">
+                     <div className="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                        <FileText className="w-5 h-5 text-[#a80607]" />
+                        <span className="text-xs font-bold uppercase tracking-widest text-white">Fund Details</span>
+                     </div>
+                     <dl className="space-y-6">
+                        <div>
+                           <dt className="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-1">AIF Name</dt>
+                           <dd className="text-lg font-serif text-white group-hover:text-[#a80607] transition-colors">Senhri Investment Fund</dd>
+                        </div>
+                        <div>
+                           <dt className="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-1">Registration No.</dt>
+                           <dd className="text-base font-mono text-white/90 bg-black/30 px-3 py-1 rounded w-fit border border-white/5">
+                              IN/AIF1/25-26/1999
+                           </dd>
+                        </div>
+                        <div>
+                           <dt className="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-1">Manager</dt>
+                           <dd className="text-base font-serif text-white">Red Vanda Partners</dd>
+                        </div>
+                     </dl>
+                  </div>
+
+                  {/* Card 2: Location */}
+                  <div className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:border-white/20 transition-colors group">
+                     <div className="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
+                        <Building2 className="w-5 h-5 text-[#a80607]" />
+                        <span className="text-xs font-bold uppercase tracking-widest text-white">Registered Office</span>
+                     </div>
+                     <address className="not-italic space-y-4">
+                        <div>
+                           <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 block mb-1">Entity</span>
+                           <span className="text-base font-serif text-white">Mizoram Startup Mission</span>
+                        </div>
+                        <div>
+                           <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 block mb-1">Location</span>
+                           <div className="text-sm text-slate-300 leading-relaxed font-light">
+                              <p>Planning Dept., Block I</p>
+                              <p>Treasury Square, Aizawl</p>
+                              <p className="mt-1 text-white font-medium">Mizoram, India - 796005</p>
+                           </div>
+                        </div>
+                     </address>
+                  </div>
+
                </div>
             </div>
          </Container>
