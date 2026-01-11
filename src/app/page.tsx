@@ -141,13 +141,11 @@ export default function Home() {
                   Pitch Us <ArrowRight className="w-5 h-5 group-hover:-rotate-45 transition-transform duration-300" />
                 </Link>
                 
-                {/* --- UPDATED: INTERACTIVE THESIS PILL --- */}
                 <Link
                   href="/thesis"
                   className="group inline-flex items-center gap-2 px-8 py-4 bg-white/80 backdrop-blur-md text-slate-900 border border-slate-200 font-bold rounded-full transition-all duration-300 hover:bg-white hover:border-orange-200 hover:shadow-lg hover:shadow-orange-500/10 hover:-translate-y-0.5"
                 >
                   <span>Our Thesis</span>
-                  {/* Added sliding arrow for interaction feedback */}
                   <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-orange-600 group-hover:translate-x-1 transition-all duration-300" />
                 </Link>
               </div>
@@ -223,31 +221,31 @@ export default function Home() {
                      <animate attributeName="stroke-dasharray" from="0,400" to="400,0" dur="4s" repeatCount="indefinite" />
                   </path>
 
-                  {/* === LABELS (YOUR COORDINATES) === */}
+                  {/* === LABELS (FIXED COORDINATES) === */}
                   
-                  {/* Pre-Seed Label */}
-                  <foreignObject x="60" y="415" width="80" height="40">
+                  {/* Pre-Seed Label: Centered Below */}
+                  <foreignObject x="30" y="375" width="80" height="40">
                     <div className="bg-white/90 border border-slate-300 text-[9px] font-bold px-2 py-1 rounded shadow-sm text-slate-700 backdrop-blur-sm text-center">
                       Pre-Seed
                     </div>
                   </foreignObject>
 
-                  {/* Series A Label */}
-                  <foreignObject x="360" y="415" width="80" height="40">
+                  {/* Series A Label: Centered Below */}
+                  <foreignObject x="370" y="375" width="80" height="40">
                     <div className="bg-orange-50 border-2 border-orange-500 text-[10px] font-bold px-2 py-1 rounded shadow-md text-orange-900 backdrop-blur-sm text-center">
                       Series A
                     </div>
                   </foreignObject>
 
-                  {/* Pre-IPO Label */}
-                  <foreignObject x="227" y="77" width="90" height="50">
+                  {/* Pre-IPO Label: Centered Above (Fixed Position) */}
+                  <foreignObject x="192.5" y="75" width="90" height="50">
                     <div className="bg-slate-900 border-2 border-red-600 text-[10px] font-bold px-2 py-1 rounded shadow-lg text-white backdrop-blur-sm text-center">
                       Pre-IPO
                     </div>
                   </foreignObject>
 
                   {/* Infrastructure Label */}
-                  <foreignObject x="210" y="235" width="130" height="40">
+                  <foreignObject x="175" y="204.5" width="130" height="40">
                     <div className="bg-white/95 border-2 border-orange-400 text-[10px] font-bold px-3 py-1.5 rounded-lg shadow-md text-slate-900 backdrop-blur-sm text-center">
                       Infrastructure
                     </div>
