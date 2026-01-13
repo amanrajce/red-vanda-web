@@ -50,9 +50,14 @@ export default function AboutPage() {
     <div className="bg-white text-slate-900 selection:bg-[#a80607] selection:text-white">
       
       {/* 1. HERO */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-44 lg:pb-32 overflow-hidden bg-white border-b border-slate-100">
+      {/* OPTIMIZED PADDING: 
+          - Increased 'pt-24' to 'pt-32' on mobile so it doesn't touch the header.
+          - Smoothed out the progression to 'md:pt-40' and 'lg:pt-48'.
+      */}
+      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-100">
         <Container className="relative z-10">
-          <div className="max-w-4xl animate-slide-up px-4 md:px-0">
+          {/* REMOVED 'px-4' here to rely on Container's uniform padding */}
+          <div className="max-w-4xl animate-slide-up">
             
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-slate-900 leading-[1.1] lg:leading-[1.05] mb-6 lg:mb-8 tracking-tight">
               Architecting the <br />
@@ -67,8 +72,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 2. OUR MISSION (Dark Theme - Layout Fixed) */}
-      {/* FIX: Removed huge pb-64 and switched to standard padding to prevent overlap issues on mobile */}
+      {/* 2. OUR MISSION (Dark Theme) */}
       <section className="bg-slate-950 py-16 md:py-24 relative overflow-hidden z-10">
         
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 pointer-events-none"></div>
@@ -109,7 +113,6 @@ export default function AboutPage() {
       </section>
 
       {/* 3. ROADMAP (Timeline) */}
-      {/* FIX: Removed negative margins and rounded top. Now sits cleanly below the mission section. */}
       <section className="bg-white py-16 md:py-24">
         <Container>
           <div className="max-w-3xl mb-12 md:mb-16">

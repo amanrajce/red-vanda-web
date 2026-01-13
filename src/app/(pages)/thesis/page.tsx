@@ -9,13 +9,13 @@ import {
   CheckCircle2, 
   Target, 
   Globe, 
-  TrendingUp,
-  Activity,
-  Layers,
-  ArrowRight,
-  Sparkles,
-  Plus,
-  Minus
+  TrendingUp, 
+  Activity, 
+  Layers, 
+  ArrowRight, 
+  Sparkles, 
+  Plus, 
+  Minus 
 } from "lucide-react";
 
 // --- FAQ DATA ---
@@ -180,14 +180,19 @@ export default function ThesisPage() {
     <div className="bg-white text-slate-900 selection:bg-[#a80607] selection:text-white">
       
       {/* 1. HERO SECTION */}
-      <section className="relative pt-28 pb-16 md:pt-48 md:pb-32 overflow-hidden bg-slate-950">
+      {/* OPTIMIZATION: Updated padding to match About/Home pages:
+          Mobile: pt-32 pb-16
+          Tablet: md:pt-40 md:pb-24
+          Desktop: lg:pt-48 lg:pb-32
+      */}
+      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-950">
         <div className="absolute inset-0 pointer-events-none">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-900/50 via-slate-950/80 to-slate-950"></div>
         </div>
         
         <Container className="relative z-10">
-          <div className="max-w-5xl animate-slide-up px-2 md:px-0">
+          <div className="max-w-5xl animate-slide-up">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-[1.05] mb-6 md:mb-8 tracking-tight text-white drop-shadow-lg">
               Two Distinct Theses, <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-slate-400 to-slate-500 font-light italic">
@@ -195,7 +200,6 @@ export default function ThesisPage() {
               </span>
             </h1>
             
-            {/* ADDED: Vertical line (border-l-2 border-[#a80607] pl-6) to match Career/Contact pages */}
             <p className="text-base md:text-xl text-slate-300 leading-relaxed max-w-3xl font-light drop-shadow-md border-l-2 border-[#a80607] pl-6">
               We pursue opportunity wherever it emerges from <span className="text-white font-medium">emerging city economies</span> to the <span className="text-white font-medium">cutting edge of technology</span>.
             </p>

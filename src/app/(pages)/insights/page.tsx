@@ -1,6 +1,67 @@
+"use client";
+
+import Link from "next/link";
+import { useState, useEffect } from "react";
 import { Container } from "@/components/ui/Container";
+import { ArrowUpRight, Clock, Calendar, ChevronRight, Search, Layers } from "lucide-react";
+
+// --- 1. SKELETON PRIMITIVES ---
+const Skeleton = ({ className }: { className?: string }) => (
+  <div className={`animate-pulse bg-slate-200 rounded-lg ${className}`} />
+);
+
+const ArticleSkeleton = () => (
+  <div className="flex flex-col h-full">
+    {/* Image */}
+    <Skeleton className="aspect-[16/10] w-full rounded-xl mb-6" />
+    {/* Meta */}
+    <div className="flex gap-3 mb-3">
+      <Skeleton className="h-4 w-20 rounded-full" />
+      <Skeleton className="h-4 w-24 rounded-full" />
+    </div>
+    {/* Title */}
+    <Skeleton className="h-8 w-full mb-3" />
+    <Skeleton className="h-8 w-3/4 mb-4" />
+    {/* Text */}
+    <Skeleton className="h-4 w-full mb-2" />
+    <Skeleton className="h-4 w-full mb-2" />
+    <Skeleton className="h-4 w-2/3 mb-4" />
+    {/* Footer */}
+    <div className="mt-auto pt-4 border-t border-slate-100 flex justify-between">
+      <Skeleton className="h-4 w-16" />
+      <Skeleton className="h-4 w-12" />
+    </div>
+  </div>
+);
+
+const FeaturedSkeleton = () => (
+  <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+    <div className="lg:col-span-7">
+      <Skeleton className="aspect-[16/9] lg:aspect-[3/2] w-full rounded-2xl" />
+    </div>
+    <div className="lg:col-span-5 space-y-6">
+      <Skeleton className="h-4 w-32 rounded-full" />
+      <Skeleton className="h-12 w-full" />
+      <Skeleton className="h-12 w-3/4" />
+      <Skeleton className="h-4 w-full" />
+      <Skeleton className="h-4 w-full" />
+      <Skeleton className="h-4 w-2/3" />
+      <Skeleton className="h-5 w-40 mt-4" />
+    </div>
+  </div>
+);
 
 export default function InsightsPage() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  // --- SIMULATE NETWORK REQUEST ---
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Loads for 2 seconds to show the effect
+    return () => clearTimeout(timer);
+  }, []);
+
   const articles = [
     {
       title: "The Infrastructure Stack of 2030",
@@ -8,7 +69,8 @@ export default function InsightsPage() {
       date: "Dec 15, 2024",
       category: "Infrastructure",
       readTime: "8 min read",
-      featured: true
+      featured: true,
+      color: "bg-blue-50"
     },
     {
       title: "Investing in Climate Intelligence",
@@ -16,7 +78,8 @@ export default function InsightsPage() {
       date: "Nov 28, 2024",
       category: "Climate Tech",
       readTime: "6 min read",
-      featured: false
+      featured: false,
+      color: "bg-green-50"
     },
     {
       title: "The Rise of Institutional Founders",
@@ -24,7 +87,8 @@ export default function InsightsPage() {
       date: "Nov 12, 2024",
       category: "Venture Capital",
       readTime: "5 min read",
-      featured: false
+      featured: false,
+      color: "bg-purple-50"
     },
     {
       title: "MLOps: The Hidden Infrastructure Layer",
@@ -32,7 +96,8 @@ export default function InsightsPage() {
       date: "Oct 30, 2024",
       category: "AI/ML",
       readTime: "7 min read",
-      featured: false
+      featured: false,
+      color: "bg-orange-50"
     },
     {
       title: "Hardware's Renaissance Moment",
@@ -40,7 +105,8 @@ export default function InsightsPage() {
       date: "Oct 18, 2024",
       category: "Hardware",
       readTime: "9 min read",
-      featured: false
+      featured: false,
+      color: "bg-slate-50"
     },
     {
       title: "Energy Grid 3.0",
@@ -48,187 +114,159 @@ export default function InsightsPage() {
       date: "Sep 25, 2024",
       category: "Energy",
       readTime: "6 min read",
-      featured: false
+      featured: false,
+      color: "bg-yellow-50"
     }
   ];
 
-  const categories = ["All", "Infrastructure", "Climate Tech", "AI/ML", "Hardware", "Energy", "Venture Capital"];
+  const categories = ["All Insights", "Infrastructure", "Climate", "AI/ML", "Hardware", "Energy"];
 
   return (
-    <>
-      {/* Hero Section */}
-      <section className="pt-40 pb-20 lg:pt-48 lg:pb-24 bg-gradient-to-b from-neutral-100 to-white">
+    <div className="bg-white text-slate-900 selection:bg-[#a80607] selection:text-white">
+      
+      {/* 1. HERO SECTION */}
+      <section className="pt-32 pb-12 md:pt-40 md:pb-20 lg:pt-48 lg:pb-24 border-b border-slate-100 bg-white">
         <Container>
-          <div className="max-w-4xl">
-            <h1 className="text-heading-1 lg:text-display font-serif font-bold text-neutral-950 mb-8 animate-slide-up">
-              Insights
-            </h1>
-            <p className="text-body-lg text-neutral-700 leading-relaxed max-w-3xl">
-              Our perspectives on technology, infrastructure, and the future of innovation. 
-              Insights from our investment team and portfolio companies.
-            </p>
-          </div>
-        </Container>
-      </section>
-
-      {/* Category Filter */}
-      <section className="py-8 bg-white border-b border-neutral-300 sticky top-20 z-40 backdrop-blur-sm bg-white/95">
-        <Container>
-          <div className="flex gap-3 overflow-x-auto pb-2">
-            {categories.map((category, index) => (
-              <button
-                key={index}
-                className={`px-5 py-2 rounded-full font-medium text-body-sm whitespace-nowrap transition-all ${
-                  index === 0 
-                    ? 'bg-primary-900 text-white' 
-                    : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Featured Article */}
-      <section className="py-16 bg-white">
-        <Container>
-          {articles.filter(a => a.featured).map((article, index) => (
-            <div 
-              key={index}
-              className="group cursor-pointer"
-            >
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                {/* Image Placeholder */}
-                <div className="aspect-[16/10] bg-gradient-to-br from-primary-900/20 to-primary-700/10 rounded-2xl overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-6xl">📊</span>
-                  </div>
-                </div>
-                
-                {/* Content */}
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-body-sm">
-                    <span className="px-3 py-1 bg-primary-900/10 text-primary-900 rounded-full font-medium">
-                      {article.category}
-                    </span>
-                    <span className="text-neutral-600">{article.date}</span>
-                    <span className="text-neutral-600">•</span>
-                    <span className="text-neutral-600">{article.readTime}</span>
-                  </div>
-                  
-                  <h2 className="text-heading-2 font-serif font-bold text-neutral-950 group-hover:text-primary-900 transition-colors">
-                    {article.title}
-                  </h2>
-                  
-                  <p className="text-body-lg text-neutral-700 leading-relaxed">
-                    {article.excerpt}
-                  </p>
-                  
-                  <button className="inline-flex items-center gap-2 text-body font-medium text-primary-900 hover:text-primary-800 transition-colors group">
-                    Read Article
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
+          <div className="flex flex-col md:flex-row justify-between items-end gap-8 animate-slide-up">
+            <div className="max-w-3xl">
+              <span className="text-[#a80607] font-bold tracking-widest uppercase text-xs mb-4 block">
+                News & Perspectives
+              </span>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-slate-900 leading-[1.05] tracking-tight">
+                Insights from <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-slate-200 italic font-light">
+                  the frontier.
+                </span>
+              </h1>
             </div>
-          ))}
+            <div className="w-full md:w-auto pb-2">
+                <p className="text-slate-500 text-sm md:text-base max-w-md leading-relaxed">
+                    Deep dives into technology shifts, market structures, and the future of the Indian deep-tech ecosystem.
+                </p>
+            </div>
+          </div>
         </Container>
       </section>
 
-      {/* Article Grid */}
-      <section className="py-24 bg-white">
+      {/* 2. STICKY NAV & FILTERS */}
+      <section className="sticky top-20 z-40 bg-white/95 backdrop-blur-sm border-b border-slate-100">
         <Container>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {articles.filter(a => !a.featured).map((article, index) => (
-              <article 
-                key={index}
-                className="group cursor-pointer"
-              >
-                {/* Image Placeholder */}
-                <div className="aspect-[16/10] bg-gradient-to-br from-neutral-200 to-neutral-100 rounded-xl mb-6 overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                    <span className="text-5xl">
-                      {article.category === "Climate Tech" && "🌍"}
-                      {article.category === "AI/ML" && "🧠"}
-                      {article.category === "Hardware" && "⚙️"}
-                      {article.category === "Energy" && "⚡"}
-                      {article.category === "Venture Capital" && "💼"}
-                    </span>
+          <div className="flex items-center justify-between py-4">
+            <div className="flex gap-6 overflow-x-auto no-scrollbar mask-gradient">
+              {categories.map((cat, idx) => (
+                <button 
+                  key={idx}
+                  className={`text-xs md:text-sm font-bold uppercase tracking-widest whitespace-nowrap transition-colors pb-1 border-b-2 ${idx === 0 ? "text-[#a80607] border-[#a80607]" : "text-slate-400 border-transparent hover:text-slate-900"}`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <div className="hidden md:flex text-slate-400">
+                <Search className="w-4 h-4" />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 3. FEATURED ARTICLE (Magazine Style) */}
+      <section className="py-12 md:py-16 lg:py-20 border-b border-slate-100">
+        <Container>
+            {isLoading ? (
+              <FeaturedSkeleton />
+            ) : (
+              articles.filter(a => a.featured).map((article, index) => (
+                  <div key={index} className="group grid lg:grid-cols-12 gap-8 lg:gap-16 items-center cursor-pointer animate-fade-in">
+                      {/* Image Side */}
+                      <div className="lg:col-span-7 relative aspect-[16/9] lg:aspect-[3/2] overflow-hidden rounded-2xl bg-slate-100">
+                          <div className={`absolute inset-0 ${article.color} group-hover:scale-105 transition-transform duration-700`}></div>
+                          <div className="absolute inset-0 flex items-center justify-center text-slate-200">
+                              <Layers className="w-24 h-24 opacity-20" />
+                          </div>
+                      </div>
+
+                      {/* Content Side */}
+                      <div className="lg:col-span-5 flex flex-col justify-center">
+                          <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest mb-4 md:mb-6">
+                              <span className="text-[#a80607]">Featured</span>
+                              <span className="w-1 h-1 bg-slate-300 rounded-full"></span>
+                              <span className="text-slate-500">{article.readTime}</span>
+                          </div>
+                          
+                          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-slate-900 mb-4 md:mb-6 leading-tight group-hover:text-[#a80607] transition-colors">
+                              {article.title}
+                          </h2>
+                          
+                          <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-6 md:mb-8 font-light">
+                              {article.excerpt}
+                          </p>
+
+                          <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-slate-900 group/link">
+                              Read Full Story <ArrowUpRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1" />
+                          </div>
+                      </div>
                   </div>
-                </div>
-                
-                {/* Meta Info */}
-                <div className="flex items-center gap-3 text-body-sm text-neutral-600 mb-3">
-                  <span className="px-2 py-1 bg-neutral-100 rounded text-body-sm font-medium">
-                    {article.category}
-                  </span>
-                  <span>{article.date}</span>
-                </div>
-                
-                {/* Title */}
-                <h3 className="text-heading-4 font-serif font-bold text-neutral-950 mb-3 group-hover:text-primary-900 transition-colors">
-                  {article.title}
-                </h3>
-                
-                {/* Excerpt */}
-                <p className="text-body text-neutral-700 leading-relaxed mb-4">
-                  {article.excerpt}
-                </p>
-                
-                {/* Read Time */}
-                <div className="flex items-center justify-between pt-4 border-t border-neutral-300">
-                  <span className="text-body-sm text-neutral-600">{article.readTime}</span>
-                  <button className="text-body-sm font-medium text-primary-900 hover:text-primary-800 flex items-center gap-1 group">
-                    Read
-                    <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-              </article>
-            ))}
+              ))
+            )}
+        </Container>
+      </section>
+
+      {/* 4. ARTICLE GRID */}
+      <section className="py-16 md:py-24">
+        <Container>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-16">
+            
+            {isLoading ? (
+              // Show 6 Skeletons while loading
+              [...Array(6)].map((_, i) => <ArticleSkeleton key={i} />)
+            ) : (
+              // Show Real Articles
+              articles.filter(a => !a.featured).map((article, i) => (
+                <article key={i} className="group flex flex-col h-full cursor-pointer animate-fade-in">
+                  
+                  {/* Image */}
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-slate-50 mb-6">
+                      <div className={`absolute inset-0 ${article.color} group-hover:scale-105 transition-transform duration-500`}></div>
+                      <div className="absolute top-4 left-4 p-2 bg-white/50 backdrop-blur-sm rounded-lg text-slate-500">
+                          {i % 2 === 0 ? <Clock size={16} /> : <ArrowUpRight size={16} />}
+                      </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex flex-col grow">
+                      <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3">
+                          <span className="text-[#a80607]">{article.category}</span>
+                          <span className="w-1 h-1 bg-slate-200 rounded-full"></span>
+                          <span>{article.date}</span>
+                      </div>
+
+                      <h3 className="text-xl md:text-2xl font-serif font-bold text-slate-900 mb-3 leading-snug group-hover:text-[#a80607] transition-colors">
+                          {article.title}
+                      </h3>
+
+                      <p className="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3 font-light">
+                          {article.excerpt}
+                      </p>
+
+                      <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-medium text-slate-500">
+                          <span>{article.readTime}</span>
+                          <span className="group-hover:translate-x-1 transition-transform text-slate-900">Read <ChevronRight className="w-3 h-3 inline ml-0.5" /></span>
+                      </div>
+                  </div>
+                </article>
+              ))
+            )}
           </div>
 
           {/* Load More */}
-          <div className="text-center mt-16">
-            <button className="px-8 py-4 border-2 border-neutral-300 text-neutral-900 font-medium rounded-full hover:border-primary-900 hover:text-primary-900 transition-all">
-              Load More Articles
+          <div className="mt-16 md:mt-24 text-center">
+            <button className="px-8 py-3 border border-slate-200 text-slate-600 font-bold text-xs uppercase tracking-widest rounded-full hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all">
+                Load More Articles
             </button>
           </div>
         </Container>
       </section>
 
-      {/* Newsletter Signup */}
-      <section className="py-20 bg-primary-900 text-white">
-        <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-heading-2 font-serif font-bold mb-4">
-              Stay Updated
-            </h2>
-            <p className="text-body-lg mb-8 opacity-90">
-              Subscribe to receive our latest insights and portfolio updates.
-            </p>
-            
-            <form className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-4 rounded-full text-neutral-950 focus:outline-none focus:ring-2 focus:ring-white"
-              />
-              <button
-                type="submit"
-                className="px-8 py-4 bg-white text-primary-900 font-medium rounded-full hover:bg-neutral-100 transition-all whitespace-nowrap"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </Container>
-      </section>
-    </>
+    </div>
   );
 }

@@ -22,7 +22,6 @@ function ContactFormContent() {
   // --- REF FOR SCROLLING ---
   const formTopRef = useRef<HTMLDivElement>(null);
 
-  // CHANGED: Default to true so the form shows immediately without asking
   const [isProductCompany, setIsProductCompany] = useState<boolean | null>(true);
   
   const [formData, setFormData] = useState({
@@ -141,14 +140,15 @@ function ContactFormContent() {
   return (
     <>
       {/* --- HERO SECTION --- */}
-      <section className="relative pt-32 pb-24 md:pt-48 md:pb-32 bg-slate-950 text-white overflow-hidden">
+      {/* OPTIMIZED PADDING: Matches About/Thesis Page Standards */}
+      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 bg-slate-950 text-white overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#a80607]/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
         </div>
 
         <Container className="relative z-10">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl animate-slide-up">
             {isJobApplication ? (
               // CAREER HERO
               <>

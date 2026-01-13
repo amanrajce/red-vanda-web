@@ -11,6 +11,7 @@ export const Header = () => {
   const pathname = usePathname();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
+  // Prevent scrolling when mobile menu is open
   useEffect(() => {
     if (isMobileOpen) {
       document.body.style.overflow = 'hidden';
@@ -30,19 +31,24 @@ export const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 w-full z-[100] bg-white/98 backdrop-blur-md border-b border-neutral-200 shadow-sm transition-all duration-300">
+      {/* FIX 1: Header Z-Index set to z-[1000]. 
+        This is the highest layer. It ensures the Logo and the 'X' button 
+        sit ON TOP of the mobile menu overlay.
+      */}
+      <header className="fixed top-0 w-full z-[1000] bg-white/98 backdrop-blur-md border-b border-neutral-200 shadow-sm transition-all duration-300">
         <Container className="flex items-center justify-between h-20">
           
           {/* --- LOGO SECTION --- */}
-          {/* Subtle professional sizing */}
-          <Link href="/" className="shrink-0 flex items-center mr-auto z-[110]">
+          <Link 
+            href="/" 
+            className="shrink-0 flex items-center mr-auto"
+            onClick={() => setIsMobileOpen(false)} // Close menu if clicking logo
+          >
             <Image 
               src="/logo.png"       
               alt="Red Vanda Partners"
               width={280}           
               height={75}           
-              // SUBTLE: h-5 mobile (20px), h-6 desktop (24px)
-              // More refined and understated professional appearance
               className="h-5 md:h-6 w-auto object-contain object-left" 
               priority              
             />
@@ -78,34 +84,49 @@ export const Header = () => {
 
           {/* --- MOBILE TOGGLE --- */}
           <button 
-            className="lg:hidden p-2 text-neutral-700 hover:text-[#a80607] relative z-[110] transition-colors focus:outline-none ml-auto"
+            className="lg:hidden p-2 text-neutral-900 hover:text-[#a80607] transition-colors focus:outline-none ml-auto"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
             aria-label="Toggle Menu"
           >
-            {isMobileOpen ? <X className="w-8 h-8" strokeWidth={1.5} /> : <Menu className="w-8 h-8" strokeWidth={1.5} />}
+            {/* The X is now guaranteed to be visible because the Header is z-[1000] */}
+            {isMobileOpen ? (
+              <X className="w-8 h-8" strokeWidth={1.5} />
+            ) : (
+              <Menu className="w-8 h-8" strokeWidth={1.5} />
+            )}
           </button>
         </Container>
       </header>
 
-      {/* --- MOBILE MENU --- */}
+      {/* --- MOBILE MENU OVERLAY --- */}
+      {/* FIX 2: Z-Index set to z-[999].
+        This puts it one layer BELOW the header. 
+        The white background covers the page content, but the Header (with the X) stays visible.
+      */}
       <div 
-        className={`fixed inset-0 z-[100] bg-white/98 backdrop-blur-xl transition-all duration-300 ease-in-out lg:hidden flex flex-col items-center justify-center
+        className={`fixed inset-0 z-[999] bg-white transition-all duration-300 ease-in-out lg:hidden flex flex-col items-center justify-start
         ${isMobileOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}
       `}>
-        <nav className="flex flex-col gap-8 text-center px-6">
+        {/* FIX 3: Added pt-32 (Padding Top). 
+          Since the header is fixed on top, we need to push the links down 
+          so they don't get hidden behind the logo/header area.
+        */}
+        <nav className="flex flex-col gap-6 text-center px-6 w-full max-w-sm pt-32">
           {navLinks.map((link) => (
             <Link 
               key={link.name} 
               href={link.href}
               onClick={() => setIsMobileOpen(false)}
-              className={`text-2xl font-serif font-medium transition-colors
-                ${pathname === link.href ? "text-[#a80607]" : "text-neutral-800 hover:text-[#a80607]"}
+              className={`text-2xl font-serif font-medium transition-colors py-2
+                ${pathname === link.href ? "text-[#a80607]" : "text-slate-900 hover:text-[#a80607]"}
               `}
             >
               {link.name}
             </Link>
           ))}
-          <div className="h-px w-20 bg-neutral-200 mx-auto my-2"></div>
+          
+          <div className="h-px w-20 bg-neutral-200 mx-auto my-4"></div>
+          
           <Link 
             href="/contact"
             onClick={() => setIsMobileOpen(false)}

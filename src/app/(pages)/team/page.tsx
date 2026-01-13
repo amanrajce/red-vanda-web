@@ -1,155 +1,170 @@
 'use client';
 
 import { Container } from "@/components/ui/Container";
-import { Linkedin, Mail, Quote, ArrowRight } from "lucide-react"; // Removed ChevronDown
+import { Linkedin, Mail, ArrowUpRight } from "lucide-react"; 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function TeamPage() {
-  const directors = [
+  const team = [
     {
       name: "Malsawmkima",
       role: "General Partner",
       bio: "A veteran of the deep-tech ecosystem with 15 years of operational experience. Formerly led infrastructure scaling at [Tech Giant] and pioneered research in renewable energy grids.",
-      statement: "We are entering an era where bits are cheap, but atoms are expensive. The next decade's returns will come from founders who are not afraid to get their hands dirty building physical infrastructure.",
-      focus: ["Energy Sovereignty", "Industrial AI", "Hard Tech"],
+      quote: "The next decade's returns will come from founders building physical infrastructure.",
+      focus: ["Energy", "Industrial AI", "Hard Tech"],
       imageSrc: "/director1.jpeg" 
     },
     {
       name: "Rinzuala",
       role: "Partner",
-      bio: "An operator-investor who has navigated the 'impossible' stages of growth. Brings a global perspective to our cross-border thesis, connecting Silicon Valley innovation with Asian scale.",
-      statement: "True innovation looks like a toy at first, then a threat, then a utility. We back founders during the 'threat' phase—when the technology works but the market isn't ready.",
-      focus: ["Biological Compute", "Logistics Infrastructure", "Financial Infrastructure"],
+      bio: "An operator-investor who has navigated the 'impossible' stages of growth. Brings a global perspective connecting Silicon Valley innovation with Asian scale.",
+      quote: "We back founders during the 'threat' phase—when tech works but the market isn't ready.",
+      focus: ["Bio Compute", "Logistics", "Fin-Infra"],
       imageSrc: "/director2.jpeg"
+    },
+    // --- DUMMY MEMBER (Placeholder) ---
+    {
+      name: "Member Name",
+      role: "Principal / Partner",
+      bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bringing 10+ years of experience in scaling technology infrastructure and supporting early-stage founders through critical growth phases.",
+      quote: "This is a placeholder for a strategic quote about the partner's investment philosophy.",
+      focus: ["Sector A", "Sector B", "Sector C"],
+      imageSrc: "/director1.jpeg" 
     }
   ];
 
   return (
-    <>
+    <div className="bg-white text-slate-900 selection:bg-[#a80607] selection:text-white">
+      
       {/* 1. HERO */}
-      {/* Optimized Padding: Content is high enough to be seen immediately, no arrow needed */}
-      <section className="pt-28 pb-16 md:pt-40 md:pb-20 lg:pt-48 lg:pb-24 bg-white border-b border-neutral-100">
+      {/* OPTIMIZATION: Tighter padding on mobile (pt-28) to reduce white space gap */}
+      <section className="pt-28 pb-12 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 border-b border-slate-100">
         <Container>
           <div className="max-w-4xl animate-slide-up">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 bg-neutral-50 text-neutral-900 border border-neutral-200 rounded-full text-[10px] lg:text-xs font-bold uppercase tracking-widest mb-6 lg:mb-8">
-              <span className="w-2 h-2 rounded-full bg-primary-700 animate-pulse"></span>
-              The General Partners
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-50 border border-slate-200 rounded-full mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#a80607] animate-pulse"></span>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-500">
+                The Partnership
+              </span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-neutral-950 mb-6 lg:mb-8 leading-[1.1] lg:leading-[1.05]">
+            {/* OPTIMIZATION: Responsive font sizing text-4xl (mobile) -> text-7xl (desktop) */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-slate-900 leading-[1.05] mb-6 md:mb-8 tracking-tight">
               Conviction <br/>
-              <span className="text-slate-400 italic font-light">Capital.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-slate-200 italic font-light">
+                Capital.
+              </span>
             </h1>
             
-            <p className="text-base md:text-xl text-neutral-600 max-w-2xl leading-relaxed">
+            <p className="text-base md:text-xl text-slate-600 max-w-2xl leading-relaxed border-l-2 border-[#a80607] pl-6">
               We are a high-concentration partnership. We invest our own capital, 
-              take board seats, and work directly with founders. No associates, no committees.
+              take board seats, and work directly with founders. No committees.
             </p>
           </div>
         </Container>
       </section>
 
-      {/* 2. DIRECTORS SECTION */}
-      <section className="bg-white pb-12 lg:pb-32">
-        {directors.map((director, index) => (
-          <div key={index} className="group border-b border-neutral-100 last:border-0 hover:bg-neutral-50/30 transition-colors duration-500">
-            <Container>
-              <div className="py-16 md:py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-24 items-start">
+      {/* 2. TEAM GRID */}
+      <section className="py-16 md:py-24 lg:py-32">
+        <Container>
+          {/* OPTIMIZATION: gap-y-16 for mobile separation, gap-y-24 for desktop breathing room */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 lg:gap-y-24">
+            
+            {team.map((member, index) => (
+              <div key={index} className="group flex flex-col h-full">
                 
-                {/* LEFT COLUMN: Image & Role */}
-                <div className="lg:col-span-5 space-y-6 lg:space-y-8 lg:sticky lg:top-32 self-start">
-                  
-                  {/* Photo Frame */}
-                  <div className="relative aspect-[4/5] w-full md:w-3/4 lg:w-full bg-neutral-100 overflow-hidden shadow-sm">
-                     <Image 
-                        src={director.imageSrc} 
-                        alt={director.name}
-                        fill
-                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        unoptimized={true} 
-                     />
-                     <div className="absolute inset-0 -z-10 flex items-center justify-center text-neutral-400 text-xs bg-neutral-100">
-                        Loading...
-                     </div>
-                  </div>
-
-                  {/* Role & Links */}
-                  <div className="flex justify-between items-end border-t border-neutral-200 pt-4 lg:pt-6 md:w-3/4 lg:w-full">
-                    <div>
-                        <h3 className="font-serif text-xl lg:text-2xl font-bold text-neutral-950 group-hover:text-primary-800 transition-colors duration-500">
-                            {director.name}
-                        </h3>
-                        <p className="font-mono text-primary-700 text-[10px] lg:text-xs uppercase tracking-widest mt-1">
-                            {director.role}
-                        </p>
-                    </div>
-                    <div className="flex gap-2 opacity-100 lg:opacity-60 lg:group-hover:opacity-100 transition-opacity duration-500">
-                        <a href="#" className="p-2 border border-neutral-200 hover:border-primary-600 hover:text-primary-700 transition-colors rounded-full bg-white">
-                            <Linkedin className="w-4 h-4" />
-                        </a>
-                        <a href="#" className="p-2 border border-neutral-200 hover:border-primary-600 hover:text-primary-700 transition-colors rounded-full bg-white">
-                            <Mail className="w-4 h-4" />
-                        </a>
-                    </div>
-                  </div>
+                {/* IMAGE FRAME - OPTIMIZED */}
+                {/* MOBILE: w-full (fills column width for clarity)
+                   DESKTOP: lg:w-[85%] (creates the refined, smaller look you requested)
+                */}
+                <div className="relative aspect-[4/5] w-full lg:w-[85%] bg-slate-100 overflow-hidden mb-6 md:mb-8 grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out shadow-sm border border-slate-100">
+                   <Image 
+                      src={member.imageSrc} 
+                      alt={member.name}
+                      fill
+                      className="object-cover object-top scale-100 group-hover:scale-105 transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                   />
                 </div>
 
-                {/* RIGHT COLUMN: The "Manifesto" */}
-                <div className="lg:col-span-7 flex flex-col h-full pt-0 lg:pt-8">
+                {/* INFO */}
+                <div className="flex flex-col grow">
+                  <div className="flex justify-between items-baseline mb-2">
+                    <h3 className="text-2xl font-serif font-bold text-slate-900 group-hover:text-[#a80607] transition-colors">
+                      {member.name}
+                    </h3>
+                    
+                    {/* OPTIMIZATION: Always visible on mobile for usability, opacity fade on desktop */}
+                    <div className="flex gap-3 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
+                        <Link href="#" className="text-slate-400 hover:text-[#a80607] transition-colors p-1">
+                            <Linkedin size={18} />
+                        </Link>
+                        <Link href="#" className="text-slate-400 hover:text-[#a80607] transition-colors p-1">
+                            <Mail size={18} />
+                        </Link>
+                    </div>
+                  </div>
                   
-                  <p className="text-base md:text-lg lg:text-xl text-neutral-600 leading-relaxed mb-8 md:mb-12 lg:mb-16 max-w-2xl">
-                    {director.bio}
+                  <p className="text-xs font-mono font-bold uppercase tracking-widest text-slate-400 mb-4">
+                    {member.role}
                   </p>
 
-                  <div className="relative pl-6 lg:pl-12 border-l-4 border-neutral-200 group-hover:border-primary-800 py-1 lg:py-2 mb-10 lg:mb-16 transition-colors duration-700">
-                    <Quote className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-6 h-6 lg:w-8 lg:h-8 text-neutral-300 group-hover:text-primary-800 bg-white p-1 transition-colors duration-700" />
-                    <blockquote className="font-serif text-xl md:text-3xl lg:text-4xl leading-tight text-neutral-900 italic">
-                      "{director.statement}"
-                    </blockquote>
-                  </div>
+                  <p className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 font-light border-l border-slate-200 pl-4">
+                    {member.bio}
+                  </p>
 
-                  <div className="mt-auto">
-                    <span className="block font-mono text-[10px] lg:text-xs uppercase text-neutral-400 mb-4 tracking-widest">Investment Focus</span>
-                    <div className="flex flex-wrap gap-2 lg:gap-3">
-                        {director.focus.map((tag, i) => (
-                            <span 
-                                key={i} 
-                                className="px-3 py-1.5 lg:px-4 lg:py-2 bg-white text-neutral-600 border border-neutral-200 text-xs lg:text-sm font-medium group-hover:border-primary-200 group-hover:text-primary-900 transition-all duration-500"
-                            >
-                                {tag}
-                            </span>
-                        ))}
+                  {/* TAGS */}
+                  <div className="mt-auto pt-4">
+                    <div className="flex flex-wrap gap-2">
+                      {member.focus.map((tag, i) => (
+                        <span key={i} className="text-[10px] font-bold uppercase tracking-wide px-2 py-1 bg-slate-50 text-slate-500 rounded-md border border-slate-100">
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
-
                 </div>
+
               </div>
-            </Container>
+            ))}
+
           </div>
-        ))}
+        </Container>
       </section>
 
-      {/* 3. CLOSING */}
-      <section className="py-16 lg:py-24 bg-neutral-950 text-white">
-        <Container>
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 lg:gap-12">
-                <div className="max-w-xl">
-                    <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-4 lg:mb-6 text-white">
-                        Access to the partnership.
-                    </h2>
-                    <p className="text-neutral-400 text-base lg:text-lg">
-                        We don't hide behind a website. If you are building something that fits our thesis (Product-first, Series A potential), we want to hear from you directly.
-                    </p>
-                </div>
-                <div className="w-full md:w-auto">
-                     <a href="/contact" className="inline-flex items-center justify-center w-full md:w-auto gap-3 px-8 py-4 bg-white text-neutral-950 font-medium hover:bg-primary-50 transition-colors rounded-full">
-                        Submit Pitch Deck <ArrowRight className="w-4 h-4" />
-                    </a>
-                </div>
+      {/* 3. JOIN US CTA (VISIBILITY FIXED) */}
+      {/* OPTIMIZATION: 
+          - Changed bg to slate-900 with a gradient to stand out from footer.
+          - Added top border/highlight for definition.
+          - Brightened text colors for better readability on phones.
+      */}
+      <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 text-white border-t border-slate-800 relative overflow-hidden">
+        {/* Background texture for professional polish */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+        
+        <Container className="relative z-10">
+            <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
+                <span className="text-[#a80607] font-bold tracking-widest uppercase text-xs mb-4">Join the Team</span>
+                
+                <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6 text-white drop-shadow-sm">
+                    We are always hiring.
+                </h2>
+                
+                {/* Lighter text (slate-300) for better contrast than slate-400 */}
+                <p className="text-slate-300 text-base md:text-lg mb-8 font-light leading-relaxed">
+                    We are looking for analysts, engineers, and operators who think differently.
+                </p>
+                
+                <Link 
+                  href="/careers" 
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-950 font-bold uppercase tracking-widest text-xs rounded-full hover:bg-[#a80607] hover:text-white transition-all duration-300 shadow-lg hover:shadow-[#a80607]/20"
+                >
+                    View Open Roles <ArrowUpRight className="w-4 h-4" />
+                </Link>
             </div>
         </Container>
       </section>
-    </>
+    </div>
   );
 }

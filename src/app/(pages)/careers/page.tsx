@@ -61,14 +61,19 @@ export default function CareersPage() {
     <div className="bg-white text-slate-900 selection:bg-[#a80607] selection:text-white">
       
       {/* 1. HERO SECTION */}
-      <section className="relative pt-24 pb-16 md:pt-48 md:pb-32 overflow-hidden bg-slate-950">
+      {/* OPTIMIZED PADDING: 
+          - Mobile: pt-32 pb-16 (Matches About/Thesis)
+          - Tablet: md:pt-40 md:pb-24
+          - Desktop: lg:pt-48 lg:pb-32
+      */}
+      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-950">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
           <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#a80607]/10 rounded-full blur-[80px] md:blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
         </div>
         
         <Container className="relative z-10">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl animate-slide-up">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-[1.1] md:leading-[1.05] mb-6 md:mb-8 tracking-tight">
               Build the <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-slate-400 to-slate-600">
@@ -156,21 +161,17 @@ export default function CareersPage() {
         </Container>
       </section>
 
-      {/* 4. GENERAL APPLICATION - OPTIMIZED FOR MOBILE */}
+      {/* 4. GENERAL APPLICATION */}
       <section className="pb-16 md:pb-24">
         <Container>
-          {/* Reduced padding from p-10 to px-6 py-8 for mobile */}
           <div className="relative w-full bg-[#a80607] rounded-[1.5rem] md:rounded-[2.5rem] px-6 py-8 md:p-16 overflow-hidden shadow-2xl shadow-[#a80607]/20">
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay pointer-events-none"></div>
             
-            {/* Reduced gap from gap-10 to gap-6 */}
             <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-10 text-center lg:text-left">
               <div>
-                {/* Reduced font size text-3xl -> text-xl on mobile */}
                 <h3 className="text-xl md:text-4xl font-serif font-bold text-white mb-2 md:mb-4">
                   Don't see your role?
                 </h3>
-                {/* Reduced font size text-lg -> text-xs on mobile */}
                 <p className="text-white/80 text-xs md:text-lg font-light max-w-xl">
                   We are always looking for exceptional talent. If you believe you belong at Red Vanda, pitch us your role.
                 </p>
@@ -179,7 +180,6 @@ export default function CareersPage() {
               <div className="flex flex-col gap-2 w-full md:w-auto">
                 <a 
                   href="mailto:careers@redvanda.vc?subject=Spontaneous Application"
-                  // Compact button padding for mobile: px-6 py-3
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 md:px-10 md:py-5 bg-white text-[#a80607] font-bold text-xs md:text-sm uppercase tracking-widest rounded-xl md:rounded-2xl hover:bg-slate-50 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 w-full md:w-auto"
                 >
                   Email Your CV <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
