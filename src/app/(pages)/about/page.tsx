@@ -50,44 +50,31 @@ export default function AboutPage() {
     <div className="bg-white text-slate-900 selection:bg-[#a80607] selection:text-white">
       
       {/* 1. HERO */}
-      {/* OPTIMIZED PADDING: 
-          - Increased 'pt-24' to 'pt-32' on mobile so it doesn't touch the header.
-          - Smoothed out the progression to 'md:pt-40' and 'lg:pt-48'.
-      */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-white border-b border-slate-100">
         <Container className="relative z-10">
-          {/* REMOVED 'px-4' here to rely on Container's uniform padding */}
           <div className="max-w-4xl animate-slide-up">
-            
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-slate-900 leading-[1.1] lg:leading-[1.05] mb-6 lg:mb-8 tracking-tight">
               Architecting the <br />
               <span className="text-slate-400 italic font-light">Firm of the Future.</span>
             </h1>
-            
             <p className="text-base md:text-xl text-slate-600 leading-relaxed max-w-2xl mb-10 lg:mb-12">
               Red Vanda Partners backs exceptional founders across untapped <strong className="text-slate-900">Tier 2/3+ city markets</strong> and <strong className="text-slate-900">frontier technology</strong>, building companies that define the future.
             </p>
-
           </div>
         </Container>
       </section>
 
-      {/* 2. OUR MISSION (Dark Theme) */}
-      <section className="bg-slate-950 py-16 md:py-24 relative overflow-hidden z-10">
-        
+      {/* 2. OUR MISSION */}
+      <section className="bg-slate-900 py-16 md:py-24 relative overflow-hidden z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 pointer-events-none"></div>
-
         <Container className="relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            
-            {/* Left: Title & Vanda Inspiration */}
             <div className="lg:col-span-4 lg:sticky lg:top-32">
-               <span className="text-[#a80607] font-bold tracking-widest uppercase text-xs mb-4 block">Our Purpose</span>
+               <span className="text-orange-500 font-bold tracking-widest uppercase text-xs mb-4 block">Our Purpose</span>
                <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-8">Our Mission</h2>
-               
                <div className="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
                   <div className="flex items-center gap-3 mb-4">
-                     <Sparkles className="w-5 h-5 text-[#a80607]" />
+                     <Sparkles className="w-5 h-5 text-orange-500" />
                      <h4 className="font-bold text-white text-sm uppercase tracking-wide">Why "Vanda"?</h4>
                   </div>
                   <p className="text-sm text-slate-400 leading-relaxed">
@@ -95,19 +82,15 @@ export default function AboutPage() {
                   </p>
                </div>
             </div>
-
-            {/* Right: Mission Narrative */}
             <div className="lg:col-span-8 space-y-8 md:space-y-10">
                <p className="text-lg md:text-2xl text-slate-300 leading-relaxed font-light">
                   At Red Vanda Partners, we believe the next wave of transformative companies will emerge from unexpected places. While others focus exclusively on established tech hubs, we've built expertise in identifying and nurturing exceptional founders wherever they are.
                </p>
-               {/* Divider Line */}
-               <div className="h-px w-24 bg-[#a80607]"></div>
+               <div className="h-px w-24 bg-orange-600"></div>
                <p className="text-base md:text-lg text-slate-400 leading-relaxed">
                   Simultaneously, we recognize that frontier technology will reshape every industry. Our dual thesis allows us to capture opportunity across the full spectrum of innovation from grassroots disruption in emerging markets to breakthrough advances in AI, climate tech, and beyond.
                </p>
             </div>
-
           </div>
         </Container>
       </section>
@@ -119,7 +102,6 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-3 md:mb-4">The Road to 2026</h2>
             <p className="text-base md:text-lg text-slate-600">Our strategic path to institutional deployment.</p>
           </div>
-
           <div className="relative border-l-2 border-slate-200 ml-4 lg:ml-8 space-y-12 md:space-y-16">
             {roadmap.map((item, index) => (
               <div key={index} className="relative pl-8 md:pl-12 lg:pl-16 group">
@@ -148,7 +130,6 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">What Drives Us</h2>
             <p className="text-base md:text-lg text-slate-600">The principles that guide every investment decision and partnership we make.</p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {investmentProfile.map((area, idx) => (
               <div key={idx} className="bg-white p-8 rounded-[1rem] border border-slate-100 hover:border-[#a80607]/30 hover:shadow-lg transition-all duration-300">
@@ -161,77 +142,62 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* 5. REGULATORY DISCLOSURE */}
-      <div className="bg-slate-950 border-t border-slate-900 pt-20 pb-24 relative overflow-hidden">
-         {/* Subtle Legal Grid Texture */}
-         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none"></div>
-
-         <Container className="relative z-10">
+      {/* 5. REGULATORY DISCLOSURE (Paper Style) */}
+      {/* OPTIMIZATION: 
+          - Changed bg to 'bg-white' to contrast sharply with the dark footer.
+          - Used 'border-t border-slate-200' to define it as a separate section.
+          - Updated text colors to 'slate-900' and 'slate-600' for legibility.
+      */}
+      <div className="bg-white border-t border-slate-200 pt-20 pb-24">
+         <Container>
             <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
                
                {/* Left: Statement */}
                <div className="lg:w-1/3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full mb-6">
-                     <Scale className="w-3.5 h-3.5 text-[#a80607]" />
-                     <span className="text-[10px] font-mono uppercase tracking-widest text-white/80 font-bold">Compliance</span>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 border border-slate-200 rounded-full mb-6">
+                     <Scale className="w-3.5 h-3.5 text-slate-600" />
+                     <span className="text-[10px] font-mono uppercase tracking-widest text-slate-600 font-bold">Compliance</span>
                   </div>
-                  <h3 className="text-2xl font-serif text-white mb-4">Regulatory Disclosure</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                  <h3 className="text-2xl font-serif text-slate-900 mb-4">Regulatory Disclosure</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-6">
                      Red Vanda Partners operates in strict compliance with the regulations set forth by the Securities and Exchange Board of India (SEBI).
                   </p>
                   <div className="flex items-center gap-2 text-xs font-mono text-slate-500 uppercase tracking-wider">
-                     <CheckCircle2 className="w-4 h-4 text-[#a80607]" />
+                     <CheckCircle2 className="w-4 h-4 text-green-700" />
                      Regulated Entity
                   </div>
                </div>
 
-               {/* Right: Data Ledger Cards */}
-               <div className="lg:w-2/3 grid md:grid-cols-2 gap-6 w-full">
+               {/* Right: Data Ledger (Clean Table Layout) */}
+               <div className="lg:w-2/3 w-full border-t border-slate-200">
                   
-                  {/* Card 1: Fund Identity */}
-                  <div className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:border-white/20 transition-colors group">
-                     <div className="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
-                        <FileText className="w-5 h-5 text-[#a80607]" />
-                        <span className="text-xs font-bold uppercase tracking-widest text-white">Fund Details</span>
+                  {/* Row 1 */}
+                  <div className="grid md:grid-cols-2 border-b border-slate-200">
+                     <div className="py-6 md:pr-8">
+                        <dt className="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Fund Name</dt>
+                        <dd className="text-lg font-serif text-slate-900">Senhri Investment Fund</dd>
                      </div>
-                     <dl className="space-y-6">
-                        <div>
-                           <dt className="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-1">AIF Name</dt>
-                           <dd className="text-lg font-serif text-white group-hover:text-[#a80607] transition-colors">Senhri Investment Fund</dd>
-                        </div>
-                        <div>
-                           <dt className="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-1">Registration No.</dt>
-                           <dd className="text-base font-mono text-white/90 bg-black/30 px-3 py-1 rounded w-fit border border-white/5">
-                              IN/AIF1/25-26/1999
-                           </dd>
-                        </div>
-                        <div>
-                           <dt className="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-1">Manager</dt>
-                           <dd className="text-base font-serif text-white">Red Vanda Partners</dd>
-                        </div>
-                     </dl>
+                     <div className="py-6 md:pl-8 md:border-l border-slate-200">
+                        <dt className="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Registration No.</dt>
+                        <dd className="text-base font-mono text-slate-700 bg-slate-50 inline-block px-2 py-1 rounded border border-slate-100">
+                           IN/AIF1/25-26/1999
+                        </dd>
+                     </div>
                   </div>
 
-                  {/* Card 2: Location */}
-                  <div className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:border-white/20 transition-colors group">
-                     <div className="flex items-center gap-3 mb-6 border-b border-white/10 pb-4">
-                        <Building2 className="w-5 h-5 text-[#a80607]" />
-                        <span className="text-xs font-bold uppercase tracking-widest text-white">Registered Office</span>
+                  {/* Row 2 */}
+                  <div className="grid md:grid-cols-2 border-b border-slate-200">
+                     <div className="py-6 md:pr-8">
+                        <dt className="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Investment Manager</dt>
+                        <dd className="text-base font-serif text-slate-900">Red Vanda Partners</dd>
                      </div>
-                     <address className="not-italic space-y-4">
-                        <div>
-                           <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 block mb-1">Entity</span>
-                           <span className="text-base font-serif text-white">Mizoram Startup Mission</span>
-                        </div>
-                        <div>
-                           <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 block mb-1">Location</span>
-                           <div className="text-sm text-slate-300 leading-relaxed font-light">
-                              <p>Planning Dept., Block I</p>
-                              <p>Treasury Square, Aizawl</p>
-                              <p className="mt-1 text-white font-medium">Mizoram, India - 796005</p>
-                           </div>
-                        </div>
-                     </address>
+                     <div className="py-6 md:pl-8 md:border-l border-slate-200">
+                        <dt className="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Registered Office</dt>
+                        <address className="not-italic text-sm text-slate-600 leading-relaxed">
+                           Planning Dept., Block I, Treasury Square<br/>
+                           Aizawl, Mizoram - 796005
+                        </address>
+                     </div>
                   </div>
 
                </div>

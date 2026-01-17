@@ -31,18 +31,19 @@ export const Header = () => {
 
   return (
     <>
-      {/* FIX 1: Header Z-Index set to z-[1000]. 
-        This is the highest layer. It ensures the Logo and the 'X' button 
-        sit ON TOP of the mobile menu overlay.
+      {/* OPTIMIZATION: 
+          1. Changed 'bg-white/98' to 'bg-white/70'. This opacity allows the spotlight to shine through.
+          2. Increased 'backdrop-blur-md' to 'backdrop-blur-xl' to maintain the "solid" premium feel so text doesn't look messy underneath.
       */}
-      <header className="fixed top-0 w-full z-[1000] bg-white/98 backdrop-blur-md border-b border-neutral-200 shadow-sm transition-all duration-300">
+      <header className="fixed top-0 w-full z-[1000] bg-white/70 backdrop-blur-xl border-b border-neutral-200/60 shadow-sm transition-all duration-300">
         <Container className="flex items-center justify-between h-20">
           
           {/* --- LOGO SECTION --- */}
+          {/* Added 'relative z-[1002]' to ensure logo stays clickable above any overlay effects */}
           <Link 
             href="/" 
-            className="shrink-0 flex items-center mr-auto"
-            onClick={() => setIsMobileOpen(false)} // Close menu if clicking logo
+            className="shrink-0 flex items-center mr-auto relative z-[1002]"
+            onClick={() => setIsMobileOpen(false)} 
           >
             <Image 
               src="/logo.png"       
@@ -55,7 +56,8 @@ export const Header = () => {
           </Link>
           
           {/* --- DESKTOP NAV --- */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 ml-auto pl-8">
+          {/* Added 'relative z-[1002]' to ensure links stay clickable */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 ml-auto pl-8 relative z-[1002]">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -83,12 +85,12 @@ export const Header = () => {
           </nav>
 
           {/* --- MOBILE TOGGLE --- */}
+          {/* Added 'relative z-[1002]' so mobile menu button is never blocked */}
           <button 
-            className="lg:hidden p-2 text-neutral-900 hover:text-[#a80607] transition-colors focus:outline-none ml-auto"
+            className="lg:hidden p-2 text-neutral-900 hover:text-[#a80607] transition-colors focus:outline-none ml-auto relative z-[1002]"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
             aria-label="Toggle Menu"
           >
-            {/* The X is now guaranteed to be visible because the Header is z-[1000] */}
             {isMobileOpen ? (
               <X className="w-8 h-8" strokeWidth={1.5} />
             ) : (
@@ -99,18 +101,10 @@ export const Header = () => {
       </header>
 
       {/* --- MOBILE MENU OVERLAY --- */}
-      {/* FIX 2: Z-Index set to z-[999].
-        This puts it one layer BELOW the header. 
-        The white background covers the page content, but the Header (with the X) stays visible.
-      */}
       <div 
         className={`fixed inset-0 z-[999] bg-white transition-all duration-300 ease-in-out lg:hidden flex flex-col items-center justify-start
         ${isMobileOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}
       `}>
-        {/* FIX 3: Added pt-32 (Padding Top). 
-          Since the header is fixed on top, we need to push the links down 
-          so they don't get hidden behind the logo/header area.
-        */}
         <nav className="flex flex-col gap-6 text-center px-6 w-full max-w-sm pt-32">
           {navLinks.map((link) => (
             <Link 
