@@ -180,11 +180,6 @@ export default function ThesisPage() {
     <div className="bg-white text-slate-900 selection:bg-[#a80607] selection:text-white">
       
       {/* 1. HERO SECTION */}
-      {/* OPTIMIZATION: Updated padding to match About/Home pages:
-          Mobile: pt-32 pb-16
-          Tablet: md:pt-40 md:pb-24
-          Desktop: lg:pt-48 lg:pb-32
-      */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-950">
         <div className="absolute inset-0 pointer-events-none">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
@@ -227,12 +222,17 @@ export default function ThesisPage() {
             </div>
 
             <div className="lg:col-span-8">
+               
+               {/* UPDATED CONTENT BLOCK */}
                <div className="prose prose-lg text-slate-600 mb-10 md:mb-12 leading-relaxed">
                   <p className="text-lg md:text-xl text-slate-900 font-light mb-6">
-                    The next billion consumers won't come from Silicon Valley or Singapore's central business district. They'll emerge from the rapidly growing middle class in Tier 2 and Tier 3 cities across India and beyond.
+                    India's semi-urban and rural regions harbor massive scale. Non-metro and Tier 2/3 cities now account for the lion's share of new digital consumers over 80% of new internet users come from non-metro cities, powering 23% e-commerce growth. Today, well over 500 million Indians outside big cities have web access.
                   </p>
-                  <p className="text-base md:text-lg">
-                    These markets are characterized by rapidly growing populations, increasing smartphone penetration, and entrepreneurs who deeply understand local needs. We believe the most successful companies serving these markets will be built by founders who live and breathe these communities.
+                  <p className="text-base md:text-lg mb-6">
+                    Roughly half of all Indian MSMEs are already located in Tier 2/3 towns, and 45% of new startups are emerging there. The combination of booming demand and under-penetrated services means local consumers and businesses are hungry for solutions. Operating costs in smaller cities can be 20–80% lower than in metros, stretching runway for early-stage ventures.
+                  </p>
+                  <p className="text-base md:text-lg font-medium text-slate-800">
+                    In short, these regions represent a vast, underserved market primed for technology-led growth.
                   </p>
                </div>
 

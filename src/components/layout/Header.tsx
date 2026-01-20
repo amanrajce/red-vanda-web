@@ -31,15 +31,11 @@ export const Header = () => {
 
   return (
     <>
-      {/* OPTIMIZATION: 
-          1. Changed 'bg-white/98' to 'bg-white/70'. This opacity allows the spotlight to shine through.
-          2. Increased 'backdrop-blur-md' to 'backdrop-blur-xl' to maintain the "solid" premium feel so text doesn't look messy underneath.
-      */}
       <header className="fixed top-0 w-full z-[1000] bg-white/70 backdrop-blur-xl border-b border-neutral-200/60 shadow-sm transition-all duration-300">
-        <Container className="flex items-center justify-between h-20">
+        {/* CHANGED: h-20 to h-16 for a thinner profile */}
+        <Container className="flex items-center justify-between h-16">
           
-          {/* --- LOGO SECTION --- */}
-          {/* Added 'relative z-[1002]' to ensure logo stays clickable above any overlay effects */}
+          {/* --- LOGO SECTION (UNCHANGED) --- */}
           <Link 
             href="/" 
             className="shrink-0 flex items-center mr-auto relative z-[1002]"
@@ -56,7 +52,6 @@ export const Header = () => {
           </Link>
           
           {/* --- DESKTOP NAV --- */}
-          {/* Added 'relative z-[1002]' to ensure links stay clickable */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8 ml-auto pl-8 relative z-[1002]">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -85,7 +80,6 @@ export const Header = () => {
           </nav>
 
           {/* --- MOBILE TOGGLE --- */}
-          {/* Added 'relative z-[1002]' so mobile menu button is never blocked */}
           <button 
             className="lg:hidden p-2 text-neutral-900 hover:text-[#a80607] transition-colors focus:outline-none ml-auto relative z-[1002]"
             onClick={() => setIsMobileOpen(!isMobileOpen)}

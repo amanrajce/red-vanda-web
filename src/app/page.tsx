@@ -106,45 +106,40 @@ export default function Home() {
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
 
       {/* 1. HERO SECTION */}
-      <section className="relative z-10 min-h-auto lg:min-h-screen flex items-center pt-32 pb-16 md:pt-32 lg:pt-40 lg:pb-20">
+      <section className="relative z-10 min-h-auto lg:min-h-screen flex items-center pt-28 pb-16 md:pt-32 lg:pt-40 lg:pb-20">
         <Container>
           <div className="grid md:grid-cols-12 gap-8 lg:gap-12 items-center">
 
             {/* LEFT: THE MANIFESTO */}
-            <div className="md:col-span-7 animate-slide-up relative z-20">
-              <div className="inline-flex items-center gap-3 px-3 py-1.5 md:px-4 md:py-2 bg-white/50 border border-slate-200 backdrop-blur-sm rounded-full mb-4 md:mb-8 shadow-sm">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-600"></span>
-                </span>
-                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-600">
-                  Fund I: Deploying Capital
-                </span>
-              </div>
+            <div className="md:col-span-7 animate-slide-up relative z-20 text-center md:text-left">
+              
+              {/* REMOVED: Fund I / Dot Badge */}
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[7rem] font-serif font-bold text-slate-900 leading-[1.05] tracking-tight mb-4 md:mb-8">
+              {/* MOBILE OPTIMIZATION: Adjusted sizing for impact on small screens */}
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[7rem] font-serif font-bold text-slate-900 leading-[1.05] tracking-tight mb-6 md:mb-8">
                 Capital for <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500">
                   tomorrow's leaders.
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed font-light mb-6 md:mb-10 max-w-xl">
+              <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed font-light mb-8 md:mb-10 max-w-xl mx-auto md:mx-0">
                 Red Vanda Partners backs tech-enabled companies and founders from India's Tier 2/3+ cities.
                 <br /><span className="font-medium text-slate-900">Aizawl HQ • Product-First • Pre-Seed to Pre-IPO</span>
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center">
+              {/* MOBILE OPTIMIZATION: Buttons stack full width on mobile */}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center md:items-start w-full sm:w-auto">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-3 px-8 py-3 md:px-10 md:py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 transition-all shadow-xl hover:shadow-orange-900/20 text-sm md:text-base"
+                  className="group w-full sm:w-auto inline-flex justify-center items-center gap-3 px-8 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 transition-all shadow-xl hover:shadow-orange-900/20 text-sm md:text-base active:scale-[0.98]"
                 >
                   Pitch Us <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:-rotate-45 transition-transform duration-300" />
                 </Link>
 
                 <Link
                   href="/thesis"
-                  className="group inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-white/80 backdrop-blur-md text-slate-900 border border-slate-200 font-bold rounded-full transition-all duration-300 hover:bg-white hover:border-orange-200 hover:shadow-lg hover:shadow-orange-500/10 hover:-translate-y-0.5 text-sm md:text-base"
+                  className="group w-full sm:w-auto inline-flex justify-center items-center gap-2 px-8 py-4 bg-white/80 backdrop-blur-md text-slate-900 border border-slate-200 font-bold rounded-full transition-all duration-300 hover:bg-white hover:border-orange-200 hover:shadow-lg hover:shadow-orange-500/10 hover:-translate-y-0.5 text-sm md:text-base active:scale-[0.98]"
                 >
                   <span>Our Thesis</span>
                   <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-orange-600 group-hover:translate-x-1 transition-all duration-300" />
@@ -152,7 +147,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* RIGHT: THE INVESTMENT JOURNEY ILLUSTRATION */}
+            {/* RIGHT: THE INVESTMENT JOURNEY ILLUSTRATION (Hidden on Mobile/Tablet Portrait to save space) */}
             <div className="md:col-span-5 relative h-[400px] md:h-[450px] lg:h-[600px] w-full hidden md:block select-none pointer-events-none">
               <div className="absolute inset-0 flex items-center justify-center">
                 <svg viewBox="0 0 500 500" className="w-full h-full opacity-90 overflow-visible" preserveAspectRatio="xMidYMid meet">
@@ -254,7 +249,7 @@ export default function Home() {
       </section>
 
       {/* 2. THE LIVE TICKER (Infinite Scroll) */}
-      <div className="relative z-20 border-y border-slate-200 bg-white/60 backdrop-blur-md py-6 overflow-hidden">
+      <div className="relative z-20 border-y border-slate-200 bg-white/60 backdrop-blur-md py-3 overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white z-10 pointer-events-none"></div>
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white z-10 pointer-events-none"></div>
 
@@ -285,11 +280,11 @@ export default function Home() {
       </div>
 
       {/* 3. SECTION: TWO DISTINCT THESES (Dark Section) */}
-      <section className="bg-slate-900 pt-24 pb-48 lg:pt-32 lg:pb-64 relative overflow-hidden z-10">
+      <section className="bg-slate-900 pt-24 pb-24 lg:pt-32 lg:pb-64 relative overflow-hidden z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 pointer-events-none"></div>
 
         <Container>
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start relative z-10">
 
             {/* Left Sticky Header */}
             <div className="lg:sticky lg:top-32">
@@ -304,7 +299,8 @@ export default function Home() {
             </div>
 
             {/* Right Content Pillars */}
-            <div className="space-y-20">
+            {/* MOBILE OPTIMIZATION: Reduced spacing from space-y-20 to space-y-12 on mobile */}
+            <div className="space-y-12 md:space-y-20">
 
               <div className="group border-l-2 border-orange-600 pl-8 transition-transform duration-500 hover:translate-y-2">
                 <span className="text-orange-400 font-bold tracking-widest uppercase text-xs mb-3 block">Tier 2/3+ Cities</span>
@@ -397,11 +393,11 @@ export default function Home() {
               </div>
 
               {/* CARD 2 - MAP SECTION WITH INTERACTIVE POINTER */}
-              <div className="group md:col-span-2 lg:col-span-2 relative overflow-hidden rounded-[2rem] bg-slate-900 border border-slate-800 p-6 sm:p-8 transition-all hover:shadow-2xl hover:shadow-orange-500/20 hover:-translate-y-1 text-white flex flex-col justify-between">
+              {/* MOBILE OPTIMIZATION: Added min-h-[350px] so map is visible on mobile */}
+              <div className="group md:col-span-2 lg:col-span-2 relative overflow-hidden rounded-[2rem] bg-slate-900 border border-slate-800 p-6 sm:p-8 transition-all hover:shadow-2xl hover:shadow-orange-500/20 hover:-translate-y-1 text-white flex flex-col justify-between min-h-[350px]">
                 
                 {/* Background Map - Locked Position for Stability */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
-                   {/* Using HTML img for better aspect locking */}
                    <img 
                       src="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" 
                       alt="World Map"
@@ -410,11 +406,7 @@ export default function Home() {
                 </div>
 
                 {/* AIZAWL INTERACTIVE POINTER */}
-                {/* - pointer-events-auto: Allows clicking
-                   - z-30: Keeps it above the map layer
-                   - Position optimized for object-[center_35%] map cropping 
-                */}
-                <div className="absolute left-[72%] top-[36%] transform -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-auto">
+                <div className="absolute left-[70%] top-[40%] transform -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-auto">
                   <div className="relative group/pointer cursor-pointer flex flex-col items-center">
                     
                     {/* 1. Pulsing Dot (Always Visible) */}
@@ -426,7 +418,6 @@ export default function Home() {
                     {/* 2. Tooltip (Reveals ONLY on Hover/Active) */}
                     <div className="absolute top-full mt-2 opacity-0 group-hover/pointer:opacity-100 group-active/pointer:opacity-100 transition-all duration-300 transform -translate-y-2 group-hover/pointer:translate-y-0 z-40 whitespace-nowrap">
                        <div className="bg-slate-900/90 backdrop-blur-md border border-slate-700 px-3 py-1.5 rounded shadow-xl relative">
-                          {/* Triangle Pointer */}
                           <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-900 border-l border-t border-slate-700 rotate-45"></div>
                           <span className="text-[10px] font-bold uppercase tracking-widest text-slate-200">
                              Aizawl HQ
