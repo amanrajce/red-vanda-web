@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Container } from "@/components/ui/Container";
-import { Linkedin, Mail, ArrowUpRight, X, GraduationCap, Briefcase, Quote } from "lucide-react"; 
+import { Linkedin, Mail, ArrowUpRight, X, GraduationCap, Quote } from "lucide-react"; 
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,9 +13,7 @@ interface TeamMember {
   shortBio: string;
   fullBio: string[]; 
   quote: string;
-  focus: string[];
   education: string[];
-  boards?: string[];
   imageSrc: string;
   linkedin?: string;
   email?: string;
@@ -35,53 +33,53 @@ export default function TeamPage() {
 
   const team: TeamMember[] = [
     {
-      name: "Malsawmkima",
-      role: "General Partner",
-      shortBio: "A veteran of the deep-tech ecosystem with 15 years of operational experience. Formerly led infrastructure scaling at [Tech Giant].",
+      name: "Malsawmkima Sailung",
+      role: "Managing Partner",
+      shortBio: "Leads investment strategy and governance. Formerly in investment banking at Nangia Andersen and strategy at Everest Group.",
       fullBio: [
-        "Malsawmkima brings over 15 years of deep operational experience to Red Vanda. Before founding the firm, he led the infrastructure scaling division at a major tech giant, where he managed a $200M P&L and oversaw the deployment of next-gen data centers across APAC.",
-        "His investment philosophy is rooted in the belief that the physical world is the next great frontier for software. He specifically looks for founders who are bridging the gap between 'bits and atoms'—using software to orchestrate complex physical systems.",
-        "At Red Vanda, he leads the Industrial AI and Energy Sovereignty practices, working closely with founders to navigate the complexities of selling into legacy industries."
+        "Malsawmkima is the Managing Partner of Red Vanda Partners LLP, where he leads the firm’s investment strategy, governance framework, and portfolio development. He focuses on backing technology-enabled and impact-oriented businesses, with an emphasis on long-term value creation and disciplined capital allocation.",
+        "In his role, he oversees investment thesis development, fund processes, and portfolio construction, while maintaining close relationships with investors. His investment approach is centered on proprietary sourcing, strong founder alignment, and active post-investment engagement.",
+        "Prior to Red Vanda Partners, he worked in investment banking at Nangia Andersen, a member firm of Andersen Global, where he advised early- and growth-stage companies on venture capital and growth equity transactions. His experience includes deal origination, valuation and commercial due diligence, and end-to-end transaction execution alongside founders, co-investors, and legal and advisory teams.",
+        "Earlier in his career, he held strategic advisory and research roles at Everest Group, advising global technology and IT-enabled services firms. He previously worked with Deloitte and Wipro on large-scale digital transformation and public-sector advisory engagements, experience that continues to inform his practical, execution-oriented approach to working with portfolio companies.",
+        "Malsawmkima brings a combination of investment banking rigor, strategic advisory depth, and operational understanding to his role as Managing Partner, with a long-term orientation toward building resilient businesses and trusted partnerships with founders and investors."
       ],
-      quote: "The next decade's returns will come from founders building physical infrastructure.",
-      focus: ["Energy", "Industrial AI", "Hard Tech"],
-      education: ["MS, Electrical Engineering, IIT Bombay", "BS, Physics, St. Stephen's"],
-      boards: ["Atom Grid", "Nexus Materials", "Core Infra"],
+      quote: "We invest with patience where long-term fundamentals outlast short-term momentum.",
+      education: ["MBA, IIM Kozhikode", "BCA, Govt. Zirtiri Residential Science College"],
       imageSrc: "/director1.jpeg",
       linkedin: "https://www.linkedin.com/in/malsawmkima/",
-      email: "mailto:partner@redvanda.vc"
+      email: "mailto:kima.sailung@redvanda.vc"
     },
     {
       name: "Rinzuala",
       role: "Partner",
-      shortBio: "An operator-investor who has navigated the 'impossible' stages of growth. Brings a global perspective connecting Silicon Valley innovation with Asian scale.",
+      shortBio: "CEO of Mizoram Startup Mission with deep experience in institution-building and policy-linked capital deployment.",
       fullBio: [
-        "Rinzuala is an operator-investor who thrives in the chaos of the zero-to-one phase. Having spent a decade in Silicon Valley, he was an early product leader at two unicorns, where he helped scale user bases from thousands to millions.",
-        "He returned to India with a specific thesis: that the next generation of global SaaS giants will be built from India's Tier 2 hubs. He specializes in product-led growth (PLG) mechanics and helps technical founders turn prototypes into scalable platforms.",
-        "He leads the firm's thesis on Biological Compute and Logistics Infrastructure."
+        "Rinzuala is a Partner at Red Vanda Partners LLP, where he contributes to the firm’s investment strategy, ecosystem engagement, and portfolio support, with a particular focus on early-stage enterprises operating in underserved and emerging markets. He brings deep experience in institution-building, public–private collaboration, and policy-linked capital deployment, complementing the firm’s investment and governance framework.",
+        "In parallel, he serves as CEO of the Mizoram Startup Mission under the Government of Mizoram, where he leads the state’s startup and entrepreneurship agenda. In this role, he has overseen the incubation and scale-up of high-potential startups and supported more than 130 entrepreneurs through the deployment of grants and government-backed seed funding.",
+        "His responsibilities include pipeline development, structured due diligence and performance reviews, and the formation of strategic partnerships with investors, industry participants, and incubators to enable market access and follow-on funding.",
+        "Rinzuala is also the Chairman of Angel Business Promoters of Mizoram, a not-for-profit organization focused on strengthening rural MSMEs through early-stage capital and technical assistance. Through this platform, he has helped mobilize over ₹35 crore in early-stage funding while mentoring enterprises on business planning, market strategy, governance, and compliance.",
+        "Earlier in his career, he held leadership roles at MIZOFED, the United Nations Development Programme, and private sector enterprises, spanning cooperative governance, rural enterprise development, public–private partnerships, and SME strategy. Across roles, he brings a pragmatic, institution-oriented perspective to investing and ecosystem development."
       ],
-      quote: "We back founders during the 'threat' phase—when tech works but the market isn't ready.",
-      focus: ["Bio Compute", "Logistics", "Fin-Infra"],
-      education: ["MBA, Stanford GSB", "B.Tech, Computer Science"],
-      boards: ["BioSync", "LogiChain"],
+      quote: "Building institutions that bridge public policy with private capital to unlock emerging markets.",
+      education: ["MBA, IIM Kozhikode", "B.Com (Honours), SRCC"],
       imageSrc: "/director2.jpeg",
-      linkedin: "https://www.linkedin.com/in/your-profile",
-      email: "mailto:partner@redvanda.vc"
+      linkedin: "https://www.linkedin.com/in/rinzuala-ceo-531131308/",
+      email: "mailto:ceo@msum.co.in"
     },
     {
-      name: "Member Name",
-      role: "Principal / Partner",
-      shortBio: "Bringing 10+ years of experience in scaling technology infrastructure and supporting early-stage founders through critical growth phases.",
+      name: "Lalngaihawma",
+      role: "Investment Team",
+      shortBio: "Supports opportunity sourcing and diligence with a research-driven approach. Experienced in financial analysis and market sizing.",
       fullBio: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        "Lalngaihawma is part of the Investment team supporting the investment team across opportunity sourcing, market research, and diligence for early-stage and growth-oriented investments. His work includes evaluating business models, analyzing sector dynamics, validating data, and supporting the preparation of investment committee materials with a strong emphasis on analytical rigor and consistency.",
+        "He brings a research-driven approach to investment evaluation, with experience in financial analysis, market sizing, and performance benchmarking. His background enables him to support disciplined underwriting processes and contribute to evidence-based decision-making across the investment lifecycle.",
+        "Lalngaihawma has prior exposure to market and consumer research through roles with private-sector organizations, where he supported competitive analysis and data interpretation. He contributes to the fund’s research and investment processes with a structured, detail-oriented approach, supporting the identification of scalable businesses in emerging markets."
       ],
-      quote: "This is a placeholder for a strategic quote about the partner's investment philosophy.",
-      focus: ["Sector A", "Sector B", "Sector C"],
-      education: ["PhD, Economics", "BA, Finance"],
-      imageSrc: "/director1.jpeg",
-      linkedin: "https://www.linkedin.com",
-      email: "mailto:partner@redvanda.vc"
+      quote: "Play long-term games with long-term people.",
+      education: ["MBA (Finance), Mizoram University", "BBA, Madras Christian College"],
+      imageSrc: "/director3.jpeg",
+      linkedin: "https://www.linkedin.com/in/ngaiha-khawlhring-728230106/",
+      email: "mailto:research_analyst1@msum.co.in"
     }
   ];
 
@@ -92,8 +90,6 @@ export default function TeamPage() {
       <section className="pt-32 pb-12 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 border-b border-slate-100">
         <Container>
           <div className="max-w-4xl animate-slide-up">
-            
-            {/* REMOVED: "The Partnership" Badge and Dot */}
             
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-slate-900 leading-[1.05] mb-6 md:mb-8 tracking-tight">
               Conviction <br/>
@@ -162,15 +158,8 @@ export default function TeamPage() {
                     {member.shortBio}
                   </p>
 
-                  {/* BOTTOM ROW */}
-                  <div className="mt-auto pt-4 flex items-center justify-between group/btn">
-                    <div className="flex flex-wrap gap-2">
-                      {member.focus.slice(0, 2).map((tag, i) => (
-                        <span key={i} className="text-[10px] font-bold uppercase tracking-wide px-2 py-1 bg-slate-50 text-slate-500 rounded-md border border-slate-100">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                  {/* BOTTOM ROW (Know More only) */}
+                  <div className="mt-auto pt-4 flex items-center justify-end group/btn">
                     <span className="text-xs font-bold uppercase tracking-widest text-[#a80607] flex items-center gap-1 group-hover/btn:gap-2 transition-all">
                       Know More <ArrowUpRight className="w-3 h-3" />
                     </span>
@@ -255,7 +244,8 @@ export default function TeamPage() {
                    ))}
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8 md:pt-10 border-t border-slate-100">
+                {/* EDUCATION SECTION (Focus Removed) */}
+                <div className="pt-8 md:pt-10 border-t border-slate-100">
                    <div>
                       <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-500 mb-4 md:mb-6">
                          <GraduationCap className="w-4 h-4 text-slate-400" /> Education
@@ -267,19 +257,6 @@ export default function TeamPage() {
                             </li>
                          ))}
                       </ul>
-                   </div>
-
-                   <div>
-                      <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-500 mb-4 md:mb-6">
-                         <Briefcase className="w-4 h-4 text-slate-400" /> Investment Focus
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                         {selectedMember.focus.map((focus, i) => (
-                            <span key={i} className="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-xs font-bold uppercase tracking-wide text-slate-600">
-                               {focus}
-                            </span>
-                         ))}
-                      </div>
                    </div>
                 </div>
 
