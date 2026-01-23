@@ -39,8 +39,11 @@ export async function POST(request: Request) {
 
     // 3. Professional "Deal Memo" Email
     const { error: emailError } = await resend.emails.send({
-      from: 'Red Vanda Intake <onboarding@resend.dev>', // Update with verified domain later
-      to: process.env.PARTNER_EMAIL!, 
+      from: 'Red Vanda Intake <onboarding@resend.dev>',
+      
+      // UPDATED: Hardcoded to your specific email
+      to: 'info@redvanda.vc', 
+      
       replyTo: email,
       subject: `Deal Flow: ${startupName} (${stage})`,
       html: `
