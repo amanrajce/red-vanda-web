@@ -86,8 +86,8 @@ export default function TeamPage() {
   return (
     <div className="bg-white text-slate-900 selection:bg-[#a80607] selection:text-white">
       
-      {/* --- HERO --- */}
-      <section className="pt-32 pb-12 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 border-b border-slate-100">
+      {/* --- HERO (Reduced Padding) --- */}
+      <section className="pt-28 pb-10 md:pt-36 md:pb-20 lg:pt-40 lg:pb-24 border-b border-slate-100">
         <Container>
           <div className="max-w-4xl animate-slide-up">
             

@@ -237,10 +237,9 @@ export default function CareersPage() {
           className={`relative w-full md:max-w-2xl h-full bg-white shadow-2xl overflow-y-auto transform transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ${selectedJob ? 'translate-x-0' : 'translate-x-full'}`}
         >
           {selectedJob && (
-            // OPTIMIZATION: Reduced padding for mobile (p-6)
             <div className="min-h-full flex flex-col p-6 md:p-10 relative">
               
-              {/* Close Button: Better Touch Target */}
+              {/* Close Button */}
               <button 
                 onClick={() => setSelectedJob(null)}
                 className="absolute top-4 right-4 md:top-6 md:right-6 z-10 p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-full transition-all"
@@ -315,7 +314,7 @@ export default function CareersPage() {
               {/* Sticky Footer / Action */}
               <div className="mt-auto pt-10 sticky bottom-0 bg-white/95 backdrop-blur-sm pb-4 border-t border-slate-100">
                  <a 
-                    href={selectedJob.link}
+                    href="mailto:careers@redvanda.vc?subject=Job Application" // FIXED LINK
                     className="flex items-center justify-center gap-3 w-full py-4 bg-slate-900 text-white font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-[#a80607] transition-all shadow-xl hover:shadow-[#a80607]/20 active:scale-[0.98]"
                  >
                     Apply for this position <ArrowUpRight className="w-4 h-4" />
@@ -327,10 +326,11 @@ export default function CareersPage() {
         </div>
       </div>
 
-      {/* 4. GENERAL APPLICATION */}
+      {/* 4. GENERAL APPLICATION (OPTIMIZED FOR MOBILE) */}
       <section className="pb-16 md:pb-24">
         <Container>
-          <div className="relative w-full bg-[#a80607] rounded-[1.5rem] md:rounded-[2.5rem] px-6 py-8 md:p-16 overflow-hidden shadow-2xl shadow-[#a80607]/20">
+          {/* Changed px-6 py-8 to tighter padding on mobile */}
+          <div className="relative w-full bg-[#a80607] rounded-2xl md:rounded-[2.5rem] px-6 py-8 md:p-16 overflow-hidden shadow-2xl shadow-[#a80607]/20">
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay pointer-events-none"></div>
             
             <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-10 text-center lg:text-left">
@@ -338,14 +338,14 @@ export default function CareersPage() {
                 <h3 className="text-xl md:text-4xl font-serif font-bold text-white mb-2 md:mb-4">
                   Don't see your role?
                 </h3>
-                <p className="text-white/80 text-xs md:text-lg font-light max-w-xl">
+                <p className="text-white/80 text-xs md:text-lg font-light max-w-xl mx-auto lg:mx-0">
                   We are always looking for exceptional talent. If you believe you belong at Red Vanda, pitch us your role.
                 </p>
               </div>
               
               <div className="flex flex-col gap-2 w-full md:w-auto">
                 <a 
-                  href="mailto:careers@redvanda.vc?subject=Spontaneous Application"
+                  href="mailto:careers@redvanda.vc?subject=Spontaneous Application" // FIXED LINK
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 md:px-10 md:py-5 bg-white text-[#a80607] font-bold text-xs md:text-sm uppercase tracking-widest rounded-xl md:rounded-2xl hover:bg-slate-50 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 w-full md:w-auto"
                 >
                   Email Your CV <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />

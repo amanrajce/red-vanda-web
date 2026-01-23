@@ -112,10 +112,7 @@ export default function Home() {
 
             {/* LEFT: THE MANIFESTO */}
             <div className="md:col-span-7 animate-slide-up relative z-20 text-center md:text-left">
-              
-              {/* REMOVED: Fund I / Dot Badge */}
 
-              {/* MOBILE OPTIMIZATION: Adjusted sizing for impact on small screens */}
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[7rem] font-serif font-bold text-slate-900 leading-[1.05] tracking-tight mb-6 md:mb-8">
                 Capital for <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500">
@@ -128,7 +125,6 @@ export default function Home() {
                 <br /><span className="font-medium text-slate-900">Aizawl HQ • Product-First • Pre-Seed to Pre-IPO</span>
               </p>
 
-              {/* MOBILE OPTIMIZATION: Buttons stack full width on mobile */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center md:items-start w-full sm:w-auto">
                 <Link
                   href="/contact"
@@ -147,7 +143,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* RIGHT: THE INVESTMENT JOURNEY ILLUSTRATION (Hidden on Mobile/Tablet Portrait to save space) */}
+            {/* RIGHT: THE INVESTMENT JOURNEY ILLUSTRATION */}
             <div className="md:col-span-5 relative h-[400px] md:h-[450px] lg:h-[600px] w-full hidden md:block select-none pointer-events-none">
               <div className="absolute inset-0 flex items-center justify-center">
                 <svg viewBox="0 0 500 500" className="w-full h-full opacity-90 overflow-visible" preserveAspectRatio="xMidYMid meet">
@@ -229,11 +225,6 @@ export default function Home() {
                     <text x="0" y="4" textAnchor="middle" fontSize="11" fontWeight="bold" fill="white" fontFamily="sans-serif">Pre-IPO</text>
                   </g>
 
-                  <g transform="translate(250, 165)" filter="url(#shadow)">
-                    <rect x="-50" y="-12" width="100" height="24" rx="6" fill="rgba(255,255,255,0.95)" stroke="#f97316" strokeWidth="1.5" />
-                    <text x="0" y="4" textAnchor="middle" fontSize="10" fontWeight="bold" fill="#334155" fontFamily="sans-serif">Infrastructure</text>
-                  </g>
-
                 </svg>
               </div>
             </div>
@@ -248,7 +239,7 @@ export default function Home() {
 
       </section>
 
-      {/* 2. THE LIVE TICKER (Infinite Scroll) */}
+      {/* 2. THE LIVE TICKER */}
       <div className="relative z-20 border-y border-slate-200 bg-white/60 backdrop-blur-md py-3 overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white z-10 pointer-events-none"></div>
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white z-10 pointer-events-none"></div>
@@ -279,14 +270,13 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 3. SECTION: TWO DISTINCT THESES (Dark Section) */}
+      {/* 3. STRATEGY SECTION */}
       <section className="bg-slate-900 pt-24 pb-24 lg:pt-32 lg:pb-64 relative overflow-hidden z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 pointer-events-none"></div>
 
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start relative z-10">
 
-            {/* Left Sticky Header */}
             <div className="lg:sticky lg:top-32">
               <span className="text-orange-500 font-bold tracking-widest uppercase text-xs mb-4 block">Our Strategy</span>
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white mb-6 leading-tight">
@@ -298,10 +288,7 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Right Content Pillars */}
-            {/* MOBILE OPTIMIZATION: Reduced spacing from space-y-20 to space-y-12 on mobile */}
             <div className="space-y-12 md:space-y-20">
-
               <div className="group border-l-2 border-orange-600 pl-8 transition-transform duration-500 hover:translate-y-2">
                 <span className="text-orange-400 font-bold tracking-widest uppercase text-xs mb-3 block">Tier 2/3+ Cities</span>
                 <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Untapped Markets</h3>
@@ -333,7 +320,6 @@ export default function Home() {
                   Learn More <ArrowRight className="w-4 h-4 transition-transform duration-300" />
                 </Link>
               </div>
-
             </div>
           </div>
         </Container>
@@ -341,7 +327,6 @@ export default function Home() {
 
       {/* 4. MANDATE CONTENT */}
       <section className="relative z-20 bg-slate-50">
-        
         <div className="pt-24 pb-24 lg:pt-32 lg:pb-32">
           <Container>
             <div className="mb-16">
@@ -378,7 +363,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-2 pt-2 border-t border-slate-100">
                       <h3 className="text-slate-500 font-bold text-xs uppercase tracking-widest">Focus</h3>
                       <p className="text-xl font-serif font-bold text-slate-900 leading-none">
@@ -392,39 +377,34 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* CARD 2 - MAP SECTION WITH INTERACTIVE POINTER */}
-              {/* MOBILE OPTIMIZATION: Added min-h-[350px] so map is visible on mobile */}
+              {/* CARD 2 - MAP SECTION - INDIA POINTER */}
               <div className="group md:col-span-2 lg:col-span-2 relative overflow-hidden rounded-[2rem] bg-slate-900 border border-slate-800 p-6 sm:p-8 transition-all hover:shadow-2xl hover:shadow-orange-500/20 hover:-translate-y-1 text-white flex flex-col justify-between min-h-[350px]">
-                
-                {/* Background Map - Locked Position for Stability */}
-                <div className="absolute inset-0 z-0 pointer-events-none">
-                   <img 
-                      src="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" 
-                      alt="World Map"
-                      className="w-full h-full object-cover object-[center_35%] opacity-50 invert"
-                   />
+
+                {/* BACKGROUND MAP */}
+                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg"
+                    alt="World Map"
+                    className="w-full h-full object-cover opacity-50 invert transition-transform duration-500"
+                    style={{ objectPosition: "72% 38%" }}
+                  />
                 </div>
 
-                {/* AIZAWL INTERACTIVE POINTER */}
-                <div className="absolute left-[70%] top-[40%] transform -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-auto">
+                {/* POINTER - POSITIONED FOR INDIA (Northeast region - Mizoram) */}
+                <div className="absolute z-30 pointer-events-auto" style={{ left: '70%', top: '31%' }}>
                   <div className="relative group/pointer cursor-pointer flex flex-col items-center">
-                    
-                    {/* 1. Pulsing Dot (Always Visible) */}
                     <div className="relative flex items-center justify-center w-6 h-6">
-                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-600 border border-white shadow-lg shadow-orange-500/50"></span>
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-600 border border-white shadow-lg shadow-orange-500/50"></span>
                     </div>
-
-                    {/* 2. Tooltip (Reveals ONLY on Hover/Active) */}
                     <div className="absolute top-full mt-2 opacity-0 group-hover/pointer:opacity-100 group-active/pointer:opacity-100 transition-all duration-300 transform -translate-y-2 group-hover/pointer:translate-y-0 z-40 whitespace-nowrap">
-                       <div className="bg-slate-900/90 backdrop-blur-md border border-slate-700 px-3 py-1.5 rounded shadow-xl relative">
-                          <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-900 border-l border-t border-slate-700 rotate-45"></div>
-                          <span className="text-[10px] font-bold uppercase tracking-widest text-slate-200">
-                             Aizawl HQ
-                          </span>
-                       </div>
+                      <div className="bg-slate-900/90 backdrop-blur-md border border-slate-700 px-3 py-1.5 rounded shadow-xl relative">
+                        <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-900 border-l border-t border-slate-700 rotate-45"></div>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-slate-200">
+                          Aizawl HQ
+                        </span>
+                      </div>
                     </div>
-
                   </div>
                 </div>
 
@@ -446,8 +426,7 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
-                  
-                  {/* Clean Right Side */}
+
                   <div className="flex flex-col items-end gap-2 text-right">
                     <div className="flex items-center gap-2 text-xs text-slate-400 font-mono bg-slate-800/50 px-3 py-1.5 rounded-full border border-slate-700/50">
                       <MapPin className="w-3 h-3 text-orange-500" />
