@@ -106,7 +106,8 @@ export default function Home() {
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
 
       {/* 1. HERO SECTION */}
-      <section className="relative z-10 min-h-auto lg:min-h-screen flex items-center pt-28 pb-16 md:pt-32 lg:pt-40 lg:pb-20">
+      {/* UPDATE: Changed min-h-auto to min-h-[90svh] for mobile spacing, added pb-32 to clear scroll arrow */}
+      <section className="relative z-10 flex items-center pt-28 pb-32 md:pt-32 lg:pt-40 lg:pb-20 min-h-[90svh] lg:min-h-screen">
         <Container>
           <div className="grid md:grid-cols-12 gap-8 lg:gap-12 items-center">
 
@@ -232,7 +233,13 @@ export default function Home() {
           </div>
         </Container>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-50 hover:opacity-100 transition-opacity cursor-default">
+        {/* SCROLL INDICATOR OPTIMIZATION:
+            1. Removed "left-1/2 -translate-x-1/2" (Standard Centering) which can be buggy on mobile.
+            2. Added "left-0 right-0 mx-auto" (Absolute Centering). This locks it to the center of the container.
+            3. Added "pointer-events-none" so it doesn't block scrolling if it overlaps text.
+            4. Added "w-fit" to ensure the box doesn't stretch.
+        */}
+        <div className="absolute bottom-6 md:bottom-8 left-0 right-0 mx-auto w-fit flex flex-col items-center gap-2 animate-bounce opacity-50 hover:opacity-100 transition-opacity pointer-events-none z-30">
           <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Scroll</span>
           <ChevronDown className="w-5 h-5 text-slate-900" />
         </div>
