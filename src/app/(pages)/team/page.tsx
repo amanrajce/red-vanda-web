@@ -118,13 +118,13 @@ export default function TeamPage() {
                 onClick={() => setSelectedMember(member)}
               >
                 
-                {/* IMAGE FRAME */}
-                <div className="relative aspect-[4/5] w-full lg:w-[85%] bg-slate-100 overflow-hidden mb-6 md:mb-8 grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out shadow-sm border border-slate-100">
+                {/* IMAGE FRAME (Removed grayscale and zoom effects) */}
+                <div className="relative aspect-[4/5] w-full lg:w-[85%] bg-slate-100 overflow-hidden mb-6 md:mb-8 shadow-sm border border-slate-100">
                    <Image 
                       src={member.imageSrc} 
                       alt={member.name}
                       fill
-                      className="object-cover object-top scale-100 group-hover:scale-105 transition-transform duration-700"
+                      className="object-cover object-top"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                    />
                 </div>

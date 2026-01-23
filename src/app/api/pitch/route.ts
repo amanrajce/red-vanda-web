@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // 2. Database Record
+    // 2. Database Record (Backup)
     const { error: dbError } = await supabase
       .from('pitches')
       .insert([{ 
@@ -37,14 +37,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Database Error' }, { status: 500 });
     }
 
-    // 3. Professional "Deal Memo" Email
+    // 3. Send Professional "Deal Memo" to YOU
     const { error: emailError } = await resend.emails.send({
-      from: 'Red Vanda Intake <onboarding@resend.dev>',
+      // ✅ SENDER: Uses your verified domain (This is what shows up in the "From" line)
+      from: 'Red Vanda Intake <no-reply@redvanda.vc>', 
       
-      // UPDATED: Hardcoded to your specific email
+      // ✅ RECIPIENT: This is the destination inbox where you will read the pitch
       to: 'info@redvanda.vc', 
       
+      // ✅ REPLY-TO: If you hit "Reply", it goes to the Founder
       replyTo: email,
+      
       subject: `Deal Flow: ${startupName} (${stage})`,
       html: `
         <!DOCTYPE html>
@@ -133,7 +136,6 @@ export async function POST(request: Request) {
 
     if (emailError) {
       console.error('Resend Error:', emailError);
-      // We continue because DB save was successful
     }
 
     return NextResponse.json({ success: true });

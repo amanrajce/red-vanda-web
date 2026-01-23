@@ -21,8 +21,6 @@ function ContactFormContent() {
 
   // --- REF FOR SCROLLING ---
   const formTopRef = useRef<HTMLDivElement>(null);
-
-  const [isProductCompany, setIsProductCompany] = useState<boolean | null>(true);
   
   const [formData, setFormData] = useState({
     founderName: "",
@@ -53,18 +51,29 @@ function ContactFormContent() {
     }
   }, [submitted]);
 
+  // --- SECURITY: INPUT SANITIZATION ---
+  const sanitizeInput = (input: string) => {
+    return input.replace(/['";\\]/g, "").replace(/--/g, "").trim(); 
+  };
+
   // --- HANDLERS ---
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const selectedFile = e.target.files[0];
+      
+      // 1. Validate Type
       if (selectedFile.type !== "application/pdf") {
         alert("Only PDF files are allowed.");
         return;
       }
-      if (selectedFile.size > 15 * 1024 * 1024) {
-        alert("File size too large. Please keep it under 15MB.");
+      
+      // 2. Validate Size (Strict 10MB Limit)
+      // 10MB = 10 * 1024 * 1024 bytes
+      if (selectedFile.size > 10 * 1024 * 1024) {
+        alert("File size too large. Please keep it under 10MB.");
         return;
       }
+      
       setFile(selectedFile);
     }
   };
@@ -84,8 +93,9 @@ function ContactFormContent() {
     setStatusMessage(isJobApplication ? "Submitting Application..." : "Encrypting & Uploading Deck...");
 
     try {
-      // 1. UPLOAD
+      // 1. UPLOAD TO SUPABASE STORAGE
       const timestamp = Date.now();
+      // Sanitize filename to prevent directory traversal issues
       const cleanName = file.name.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
       const filePath = `${timestamp}_${cleanName}.pdf`;
 
@@ -95,22 +105,30 @@ function ContactFormContent() {
 
       if (uploadError) throw new Error("Storage Upload Failed: " + uploadError.message);
 
-      // 2. GET URL
+      // 2. GET PUBLIC URL
       const { data: { publicUrl } } = supabase.storage
         .from('pitch-decks')
         .getPublicUrl(filePath);
 
       setStatusMessage("Transmitting Data...");
 
-      // 3. API SUBMISSION
+      // 3. API SUBMISSION (with Sanitized Data)
+      const safeData = {
+        founderName: sanitizeInput(formData.founderName),
+        email: formData.email, // Emails validated by type="email"
+        startupName: isJobApplication 
+          ? `CANDIDATE: ${sanitizeInput(formData.startupName)}` 
+          : sanitizeInput(formData.startupName),
+        website: sanitizeInput(formData.website),
+        stage: formData.stage, // Dropdown value, generally safe
+        message: sanitizeInput(formData.message),
+        deckUrl: publicUrl
+      };
+
       const response = await fetch('/api/pitch', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          startupName: isJobApplication ? `CANDIDATE: ${formData.startupName}` : formData.startupName,
-          deckUrl: publicUrl
-        })
+        body: JSON.stringify(safeData)
       });
 
       if (!response.ok) {
@@ -119,6 +137,21 @@ function ContactFormContent() {
       }
 
       setSubmitted(true);
+      
+      // 4. RESET FORM STATE (Fix for repeated submission bug)
+      setFile(null);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+      setFormData({
+        founderName: "",
+        email: "",
+        startupName: "",
+        website: "",
+        sector: isJobApplication ? "Career Application" : "", 
+        stage: isJobApplication ? "N/A" : "Seed",
+        message: ""
+      });
 
     } catch (error) {
       console.error(error);
@@ -131,8 +164,8 @@ function ContactFormContent() {
   const offices = [
     {
       city: "Headquarters",
-      location: "Aizawl, Mizoram",
-      address: "Mission Veng, 796001",
+      location: "Planning Dept., Block I, Treasury Square",
+      address: "Aizawl, Mizoram - 796005",
       email: "partners@redvanda.vc"
     }
   ];
@@ -140,7 +173,6 @@ function ContactFormContent() {
   return (
     <>
       {/* --- HERO SECTION --- */}
-      {/* OPTIMIZED PADDING: Matches About/Thesis Page Standards */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 bg-slate-950 text-white overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
@@ -231,6 +263,7 @@ function ContactFormContent() {
                           <input 
                             required 
                             name="founderName"
+                            value={formData.founderName}
                             onChange={handleChange}
                             className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none transition-all placeholder:text-slate-400" 
                             placeholder="e.g. Aman Raj" 
@@ -244,6 +277,7 @@ function ContactFormContent() {
                             required 
                             type="email" 
                             name="email"
+                            value={formData.email}
                             onChange={handleChange}
                             className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none transition-all placeholder:text-slate-400" 
                             placeholder="you@example.com" 
@@ -265,6 +299,7 @@ function ContactFormContent() {
                           <input 
                             required 
                             name="startupName"
+                            value={formData.startupName}
                             onChange={handleChange}
                             className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none transition-all placeholder:text-slate-400" 
                             placeholder={isJobApplication ? "e.g. Senior Analyst at Acme Corp" : "e.g. Acme AI"} 
@@ -278,6 +313,7 @@ function ContactFormContent() {
                           <input 
                             required 
                             name="website"
+                            value={formData.website}
                             onChange={handleChange}
                             className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none transition-all placeholder:text-slate-400" 
                             placeholder="https://" 
@@ -293,6 +329,7 @@ function ContactFormContent() {
                             <div className="relative">
                               <select 
                                 name="stage"
+                                value={formData.stage}
                                 onChange={handleChange}
                                 className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none transition-all appearance-none text-slate-700 cursor-pointer hover:border-slate-300"
                               >
@@ -347,7 +384,7 @@ function ContactFormContent() {
                             <p className="text-sm font-medium text-slate-700 group-hover:text-slate-900">
                               {isJobApplication ? "Upload your CV / Resume" : "Click to upload your Pitch Deck"} <span className="text-red-500">*</span>
                             </p>
-                            <p className="text-xs text-slate-500 mt-1">PDF only (Max 15MB)</p>
+                            <p className="text-xs text-slate-500 mt-1">PDF only (Max 10MB)</p>
                           </div>
                         )}
                       </div>
@@ -365,6 +402,7 @@ function ContactFormContent() {
                           <textarea 
                             required 
                             name="message"
+                            value={formData.message}
                             rows={4}
                             onChange={handleChange}
                             className="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none transition-all placeholder:text-slate-400" 
@@ -425,7 +463,7 @@ function ContactFormContent() {
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 text-slate-300 group">
                       <Mail className="w-4 h-4 group-hover:text-white transition-colors" />
-                      <a href="mailto:media@redvanda.vc" className="hover:text-white transition-colors border-b border-transparent hover:border-white/20 pb-0.5">media@redvanda.vc</a>
+                      <a href="mailto:info@redvanda.vc" className="hover:text-white transition-colors border-b border-transparent hover:border-white/20 pb-0.5">info@redvanda.vc</a>
                     </div>
                     <div className="flex items-center gap-3 text-slate-300 group">
                       <User className="w-4 h-4 group-hover:text-white transition-colors" />
