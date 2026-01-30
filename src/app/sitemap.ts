@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9, // High priority: This is your core value proposition
     },
     {
-      url: `${baseUrl}/contact`, // The "Pitch Us" page
+      url: `${baseUrl}/pitch`, // The "Pitch Us" page
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.9, // High priority: This is your conversion goal

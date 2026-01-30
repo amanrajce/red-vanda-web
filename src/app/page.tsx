@@ -128,7 +128,7 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center md:items-start w-full sm:w-auto">
                 <Link
-                  href="/contact"
+                  href="/pitch"
                   className="group w-full sm:w-auto inline-flex justify-center items-center gap-3 px-8 py-4 bg-slate-900 text-white font-bold rounded-full hover:bg-orange-600 transition-all shadow-xl hover:shadow-orange-900/20 text-sm md:text-base active:scale-[0.98]"
                 >
                   Pitch Us <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:-rotate-45 transition-transform duration-300" />
