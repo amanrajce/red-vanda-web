@@ -376,7 +376,7 @@ export default function ThesisPage() {
                   </p>
                   
                   <Link 
-                      href="/contact"
+                      href="/pitch"
                       className="flex items-center justify-center w-full py-3 bg-[#a80607] text-white rounded-lg transition-all duration-300 hover:bg-[#8f0506] shadow-md hover:shadow-lg text-xs font-bold uppercase tracking-widest"
                   >
                       Apply for Funding <ArrowRight className="w-3.5 h-3.5 ml-2" />
