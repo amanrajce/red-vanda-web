@@ -476,7 +476,7 @@ export default function Home() {
 
               {/* CARD 4 */}
               <div className="md:col-span-2 lg:col-span-1 group relative overflow-hidden rounded-[2rem] bg-slate-900 p-6 sm:p-8 flex flex-col justify-center items-center text-center hover:bg-orange-600 transition-colors duration-500 cursor-pointer min-h-[300px]">
-                <Link href="/contact" className="absolute inset-0 z-30"></Link>
+                <Link href="/pitch" className="absolute inset-0 z-30"></Link>
                 <div className="relative z-20">
                   <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm group-hover:scale-110 transition-transform">
                     <ArrowRight className="w-6 h-6 text-white" />

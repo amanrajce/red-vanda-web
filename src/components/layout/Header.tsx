@@ -72,7 +72,7 @@ export const Header = () => {
             })}
             
             <Link 
-              href="/contact" 
+              href="/pitch" 
               className="px-6 py-2.5 text-sm font-bold text-white bg-[#a80607] hover:bg-[#850506] rounded-lg transition-all shadow-md hover:shadow-lg shadow-red-900/10 whitespace-nowrap"
             >
               Pitch Us
@@ -116,7 +116,7 @@ export const Header = () => {
           <div className="h-px w-20 bg-neutral-200 mx-auto my-4"></div>
           
           <Link 
-            href="/contact"
+            href="/pitch"
             onClick={() => setIsMobileOpen(false)}
             className="mt-2 px-10 py-4 text-xl font-bold text-white bg-[#a80607] rounded-full shadow-xl shadow-red-900/10 transition-transform active:scale-95"
           >
