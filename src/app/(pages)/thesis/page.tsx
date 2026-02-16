@@ -334,7 +334,7 @@ export default function ThesisPage() {
                   parameters={[
                     { icon: Target, label: "Check Size", value: "Up to ₹5 Cr" },
                     { icon: TrendingUp, label: "Stage", value: "Seed to Series A" },
-                    { icon: Globe, label: "Geography", value: "Global" },
+                    { icon: Globe, label: "Geography", value: "Pan-India" },
                     { icon: CheckCircle2, label: "Board Seat", value: "Preferred" }
                   ]}
                />
